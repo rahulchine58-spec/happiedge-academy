@@ -6,8 +6,8 @@
     <title>HappiEdge Academy - Digital Brochure</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <!-- Headings: Baloo 2 + Khand | Body/Devanagari: kokila bold -->
-    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Rozha+One&family=Khand:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=kokila bold&family=Noto+Sans+Devanagari:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <!-- Headings: Baloo 2 + Khand | Body/Devanagari: Mukta (thick & readable) -->
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Rozha+One&family=Khand:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Mukta:wght@500;600;700;800&family=Noto+Sans+Devanagari:wght@400;500;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
     <style>
@@ -20,12 +20,12 @@
             --bg-linen: #fdfbf7;
             --bg-dark: #0f172a;
             --text-dark: #1e293b;
-            --text-light: #64748b;
+            --text-light: #3f3f3f;
             --border-soft: #eae3d2;
             --cubic-bezier: cubic-bezier(0.16, 1, 0.3, 1);
             --heading-font: 'Baloo 2', 'Noto Sans Devanagari', sans-serif;
-            /* Gotu for all Devanagari body text */
-            --body-font: 'kokila bold', 'Noto Sans Devanagari', sans-serif;
+            /* Mukta for all Devanagari body text — thick & dark for easy reading */
+            --body-font: 'Mukta', 'Noto Sans Devanagari', sans-serif;
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; scroll-behavior: smooth; }
@@ -45,6 +45,7 @@
             color: var(--text-dark);
             line-height: 1.75;
             overflow-x: hidden;
+            font-weight: 600;
         }
 
         /* Headings always use heading font */
@@ -57,7 +58,7 @@
             font-family: var(--heading-font) !important;
         }
 
-        /* Body / paragraph text uses kokila bold (Devanagari optimised) */
+        /* Body / paragraph text uses Mukta (Devanagari optimised, thick weight) */
         p, li, .hero-desc, .vm-card p, .cohort-info p,
         .pillar-card li, .schedule-card p, .accordion-content,
         .reassurance-desc, .footer-desc, .contact-item p,
@@ -68,6 +69,8 @@
         textarea, .form-note, .contact-item h4,
         .soon-pill {
             font-family: var(--body-font) !important;
+            font-weight: 600;
+            color: var(--text-dark);
         }
 
         /* ── KEYFRAMES ── */
@@ -108,8 +111,10 @@
         .hero > *:not(.hero-blobs) { position:relative; z-index:1; }
 
         /* ── WHATSAPP FLOAT ── */
-        .float-cta { position:fixed; bottom:24px; right:24px; width:60px; height:60px; border-radius:50%; background:#25D366; color:white; display:flex; align-items:center; justify-content:center; font-size:28px; text-decoration:none; box-shadow:0 8px 24px rgba(37,211,102,.45); z-index:200; animation:pulseGlow 2.4s infinite; }
+        .float-cta { position:fixed; right:24px; width:60px; height:60px; border-radius:50%; color:white; display:flex; align-items:center; justify-content:center; font-size:28px; text-decoration:none; z-index:200; transition: transform .3s ease; }
         .float-cta:hover { transform:scale(1.08); }
+        .float-cta.whatsapp { bottom:24px; background:#25D366; box-shadow:0 8px 24px rgba(37,211,102,.45); animation:pulseGlow 2.4s infinite; }
+        .float-cta.instagram { bottom:96px; background:radial-gradient(circle at 30% 110%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%); box-shadow:0 8px 24px rgba(214,36,159,.4); }
 
         /* ── NAV ── */
         nav { background-color:rgba(253,251,247,.82); backdrop-filter:blur(12px); border-bottom:1px solid var(--border-soft); padding:15px 5%; display:flex; justify-content:space-between; align-items:center; position:sticky; top:0; z-index:100; transition:padding .3s ease, box-shadow .3s ease; }
@@ -126,7 +131,74 @@
         .hero h1 { font-size:56px; color:var(--primary); font-weight:800; line-height:1.25; max-width:950px; margin:0 auto 20px auto; letter-spacing:-1px; font-family:var(--heading-font); }
         .hero h1 span { color:var(--accent); position:relative; }
         .hero h1 span::after { content:''; position:absolute; left:0; bottom:5px; width:100%; height:6px; background-color:rgba(255,179,0,.3); z-index:-1; }
-        .hero-desc { font-size:18px; color:var(--text-light); max-width:800px; margin:0 auto 40px auto; font-weight:400; font-family:var(--body-font); }
+        .hero-desc { font-size:18px; color:var(--text-dark); max-width:800px; margin:0 auto 40px auto; font-weight:600; font-family:var(--body-font); }
+
+        /* ── HERO LOGO LOCKUP (always renders, even without a logo file) ── */
+        .hero-logo-lockup {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin: 0 auto 22px auto;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .hero-logo-lockup img {
+            max-height: 100px;
+            max-width: 320px;
+            object-fit: contain;
+            display: block;
+        }
+
+        .hero-logo-fallback {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .hero-logo-icon {
+            width: 64px;
+            height: 64px;
+            border-radius: 18px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            color: white;
+            box-shadow: 0 10px 26px rgba(0,77,64,.3);
+            flex-shrink: 0;
+        }
+
+        .hero-logo-wordmark {
+            text-align: left;
+            line-height: 1.05;
+        }
+
+        .hero-logo-wordmark .word-main {
+            font-family: var(--heading-font);
+            font-size: 34px;
+            font-weight: 800;
+            color: var(--primary);
+            letter-spacing: -0.5px;
+        }
+
+        .hero-logo-wordmark .word-main span { color: var(--accent); }
+
+        .hero-logo-wordmark .word-sub {
+            font-family: var(--body-font);
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--text-light);
+        }
+
+        /* if a real logo image loads successfully, hide the fallback lockup */
+        .hero-logo-lockup img:not([style*="display: none"]) ~ .hero-logo-fallback {
+            display: none;
+        }
 
         /* ── VISION MISSION ── */
         .vision-mission-grid { display:grid; grid-template-columns:1fr 1fr; gap:30px; max-width:1100px; margin:0 auto 60px auto; padding:0 20px; }
@@ -135,7 +207,7 @@
         .vm-icon { width:60px; height:60px; border-radius:50%; background-color:var(--accent-light); color:var(--accent); display:flex; align-items:center; justify-content:center; font-size:24px; margin-bottom:24px; }
         .vm-card.mission .vm-icon { background-color:rgba(0,121,107,.1); color:var(--primary); }
         .vm-card h2 { font-size:24px; color:var(--primary); margin-bottom:15px; font-weight:800; }
-        .vm-card p { color:var(--text-light); font-size:16px; }
+        .vm-card p { color:var(--text-dark); font-size:16px; }
 
         /* ── JOURNEY SECTION ── */
         .journey-section { padding:70px 5% 90px 5%; text-align:center; position:relative; }
@@ -152,7 +224,7 @@
         .journey-stop .dot { width:54px; height:54px; border-radius:50%; background:white; border:3px solid var(--accent); color:var(--accent); display:flex; align-items:center; justify-content:center; font-size:20px; margin:0 auto 12px auto; box-shadow:0 8px 20px rgba(255,87,34,.18); }
         .journey-stop:nth-child(odd) .dot { border-color:var(--primary); color:var(--primary); box-shadow:0 8px 20px rgba(0,77,64,.15); }
         .journey-stop .age-label { font-weight:800; color:var(--text-dark); font-family:var(--heading-font); font-size:15px; }
-        .journey-stop .age-desc { color:var(--text-light); font-size:13px; }
+        .journey-stop .age-desc { color:var(--text-dark); font-size:13px; }
 
         /* ── STATS ── */
         .stats-strip { display:grid; grid-template-columns:repeat(4,1fr); gap:20px; max-width:1000px; margin:55px auto 0 auto; }
@@ -160,14 +232,14 @@
         .stat-box:hover { transform:translateY(-6px); box-shadow:0 12px 28px rgba(111,88,41,.08); }
         .stat-number { font-family:'Khand',var(--heading-font); font-size:40px; font-weight:800; color:var(--accent); line-height:1; }
         .stat-box:nth-child(even) .stat-number { color:var(--primary); }
-        .stat-label { font-size:13px; color:var(--text-light); font-weight:600; margin-top:6px; }
+        .stat-label { font-size:13px; color:var(--text-dark); font-weight:700; margin-top:6px; }
 
         /* ── TABS ── */
         .section-selector { text-align:center; padding:40px 0 20px 0; background:#fff8f0; border-top:1px solid var(--border-soft); border-bottom:1px solid var(--border-soft); }
         .section-selector h2 { font-size:32px; color:var(--primary); margin-bottom:30px; font-weight:800; }
         .tab-buttons { display:inline-flex; flex-wrap:wrap; justify-content:center; gap:6px; background:white; padding:8px; border-radius:50px; border:1px solid var(--border-soft); box-shadow:0 8px 25px rgba(0,0,0,.03); margin-bottom:40px; }
-        .tab-btn { padding:14px 30px; border-radius:40px; border:none; background:transparent; font-size:15px; font-weight:700; color:var(--text-light); cursor:pointer; transition:all .4s var(--cubic-bezier); display:flex; align-items:center; gap:8px; }
-        .tab-btn.locked-tab { color:#b6ad98; }
+        .tab-btn { padding:14px 30px; border-radius:40px; border:none; background:transparent; font-size:15px; font-weight:700; color:var(--text-dark); cursor:pointer; transition:all .4s var(--cubic-bezier); display:flex; align-items:center; gap:8px; }
+        .tab-btn.locked-tab { color:#8a8164; }
         .tab-btn.locked-tab.active { background-color:var(--amber); color:white; box-shadow:0 6px 15px rgba(255,179,0,.3); }
         .soon-pill { background:var(--amber); color:white; font-size:10px; font-weight:800; padding:3px 9px; border-radius:10px; text-transform:uppercase; letter-spacing:.5px; }
         .tab-btn.locked-tab.active .soon-pill { background:rgba(255,255,255,.3); }
@@ -182,7 +254,7 @@
         .cohort-intro-grid { display:grid; grid-template-columns:1.2fr .8fr; gap:40px; align-items:center; border-bottom:2px solid var(--border-soft); padding-bottom:40px; margin-bottom:40px; }
         .cohort-info h3 { font-size:36px; color:var(--primary); font-weight:800; margin-bottom:15px; }
         .cohort-info .nep-badge { background-color:#e0f2f1; color:var(--primary); padding:6px 16px; border-radius:20px; font-size:13px; font-weight:700; display:inline-block; margin-bottom:20px; text-transform:uppercase; }
-        .cohort-info p { font-size:16px; color:var(--text-light); margin-bottom:20px; }
+        .cohort-info p { font-size:16px; color:var(--text-dark); margin-bottom:20px; }
         .cohort-img-wrapper { border-radius:24px; overflow:hidden; box-shadow:0 10px 30px rgba(0,0,0,.05); border:2px solid var(--border-soft); height:250px; animation:float 6s ease-in-out infinite; }
         .cohort-img-wrapper img { width:100%; height:100%; object-fit:cover; }
 
@@ -193,7 +265,7 @@
         .pillar-card h4 { font-size:19px; color:var(--primary); font-weight:700; margin-bottom:12px; display:flex; align-items:center; gap:10px; }
         .pillar-card h4 i { color:var(--accent); }
         .pillar-card ul { list-style:none; padding-left:0; }
-        .pillar-card li { font-size:14px; color:var(--text-light); margin-bottom:10px; position:relative; padding-left:20px; }
+        .pillar-card li { font-size:14px; color:var(--text-dark); margin-bottom:10px; position:relative; padding-left:20px; }
         .pillar-card li::before { content:'•'; color:var(--accent); font-size:20px; position:absolute; left:0; top:-2px; }
         .pillar-card-wide { grid-column:1/-1; }
 
@@ -203,7 +275,7 @@
         .locked-overlay { position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:14px; text-align:center; padding:30px; background:linear-gradient(180deg, rgba(255,255,255,.55), rgba(255,255,255,.92)); border-radius:30px; }
         .locked-overlay .lock-icon { width:70px; height:70px; border-radius:50%; background:var(--amber); color:white; display:flex; align-items:center; justify-content:center; font-size:26px; box-shadow:0 10px 28px rgba(255,179,0,.35); animation:pulseGlow 2.4s infinite; }
         .locked-overlay h3 { color:var(--primary); font-size:26px; font-weight:800; }
-        .locked-overlay p { color:var(--text-light); max-width:460px; font-size:15px; }
+        .locked-overlay p { color:var(--text-dark); max-width:460px; font-size:15px; }
 
         /* ── SCHEDULE ── */
         .schedule-section { padding:80px 5%; text-align:center; }
@@ -215,21 +287,21 @@
         .schedule-card .time-badge { background-color:var(--accent-light); color:var(--accent); padding:5px 12px; border-radius:12px; font-weight:800; font-size:14px; display:inline-block; margin-bottom:15px; }
         .schedule-card.accent .time-badge { background-color:rgba(0,121,107,.1); color:var(--primary); }
         .schedule-card h3 { font-size:18px; color:var(--primary); margin-bottom:10px; font-weight:700; }
-        .schedule-card p { font-size:14px; color:var(--text-light); }
+        .schedule-card p { font-size:14px; color:var(--text-dark); }
 
         /* ── REASSURANCE ── */
         .reassurance-section { background-color:var(--bg-dark); color:white; padding:80px 5%; text-align:center; position:relative; }
         .reassurance-section h2 { font-size:38px; color:white; margin-bottom:20px; font-weight:800; }
-        .reassurance-desc { color:#94a3b8; font-size:17px; max-width:800px; margin:0 auto 50px auto; }
+        .reassurance-desc { color:#cbd5e1; font-size:17px; max-width:800px; margin:0 auto 50px auto; }
         .accordion-container { max-width:900px; margin:0 auto; text-align:left; }
         .accordion-item { border-bottom:1px solid #1e293b; padding:24px 0; }
         .accordion-header { display:flex; justify-content:space-between; align-items:center; cursor:pointer; user-select:none; }
         .accordion-header h3 { font-size:20px; color:white; font-weight:700; display:flex; align-items:center; gap:15px; }
         .accordion-header h3 i { color:var(--accent); }
-        .accordion-header .arrow-icon { transition:transform .4s ease; color:#94a3b8; font-size:18px; }
-        .accordion-content { max-height:0; overflow:hidden; transition:max-height .4s ease; color:#94a3b8; font-size:16px; padding-top:0; line-height:1.75; }
+        .accordion-header .arrow-icon { transition:transform .4s ease; color:#cbd5e1; font-size:18px; }
+        .accordion-content { max-height:0; overflow:hidden; transition:max-height .4s ease; color:#cbd5e1; font-size:16px; padding-top:0; line-height:1.75; }
         .accordion-list { list-style:none; padding-left:0; }
-        .accordion-list li { position:relative; padding-left:26px; margin-bottom:12px; }
+        .accordion-list li { position:relative; padding-left:26px; margin-bottom:12px; color:#cbd5e1; }
         .accordion-list li::before { content:'\2713'; position:absolute; left:0; top:1px; color:var(--accent); font-weight:800; }
         .accordion-item.active .arrow-icon { transform:rotate(180deg); color:var(--accent); }
         .accordion-item.active .accordion-content { max-height:400px; padding-top:15px; }
@@ -347,7 +419,7 @@
         }
 
         .inquiry-header p {
-            color: #64748b;
+            color: #cbd5e1;
             font-size: 16px;
             max-width: 520px;
             margin: 0 auto;
@@ -374,7 +446,7 @@
         label {
             font-size: 13px;
             font-weight: 700;
-            color: #94a3b8;
+            color: #cbd5e1;
             letter-spacing: .8px;
             text-transform: uppercase;
             display: flex;
@@ -397,7 +469,7 @@
             left: 16px;
             top: 50%;
             transform: translateY(-50%);
-            color: #475569;
+            color: #94a3b8;
             font-size: 15px;
             pointer-events: none;
             transition: color .3s ease;
@@ -406,8 +478,8 @@
         .input-wrap input,
         .input-wrap select {
             width: 100%;
-            background: rgba(255,255,255,.05);
-            border: 1.5px solid rgba(255,255,255,.08);
+            background: rgba(255,255,255,.06);
+            border: 1.5px solid rgba(255,255,255,.1);
             border-radius: 14px;
             padding: 15px 16px 15px 44px;
             font-size: 15px;
@@ -418,7 +490,7 @@
             -webkit-appearance: none;
         }
 
-        .input-wrap input::placeholder { color: #475569; }
+        .input-wrap input::placeholder { color: #64748b; }
 
         .input-wrap input:focus,
         .input-wrap select:focus {
@@ -443,7 +515,7 @@
             right: 16px;
             top: 50%;
             transform: translateY(-50%);
-            color: #475569;
+            color: #94a3b8;
             font-size: 13px;
             pointer-events: none;
         }
@@ -486,7 +558,7 @@
 
         .wa-toggle-label {
             font-size: 14px;
-            color: #94a3b8;
+            color: #cbd5e1;
             font-family: var(--body-font);
         }
 
@@ -550,12 +622,12 @@
             display: inline-flex;
             align-items: center;
             gap: 7px;
-            background: rgba(255,255,255,.04);
-            border: 1px solid rgba(255,255,255,.08);
+            background: rgba(255,255,255,.05);
+            border: 1px solid rgba(255,255,255,.1);
             border-radius: 30px;
             padding: 8px 16px;
             font-size: 13px;
-            color: #64748b;
+            color: #cbd5e1;
             font-family: var(--body-font);
         }
 
@@ -585,11 +657,11 @@
         }
 
         .form-success h3 { color: white; font-size: 28px; font-weight: 800; font-family: var(--heading-font); }
-        .form-success p { color: #64748b; font-size: 16px; max-width: 380px; font-family: var(--body-font); }
+        .form-success p { color: #cbd5e1; font-size: 16px; max-width: 380px; font-family: var(--body-font); }
 
         .form-note {
             font-size: 12px;
-            color: #334155;
+            color: #94a3b8;
             text-align: center;
             margin-top: 14px;
         }
@@ -598,13 +670,13 @@
         footer { background-color:#fffdfc; border-top:1px solid var(--border-soft); padding:60px 5% 30px 5%; text-align:center; }
         .footer-logo { font-size:32px; font-weight:800; color:var(--primary); margin-bottom:15px; font-family:var(--heading-font); }
         .footer-logo span { color:var(--accent); }
-        .footer-desc { color:var(--text-light); max-width:600px; margin:0 auto 30px auto; font-size:15px; }
+        .footer-desc { color:var(--text-dark); max-width:600px; margin:0 auto 30px auto; font-size:15px; }
         .contact-info-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:30px; max-width:900px; margin:0 auto 40px auto; }
         .contact-item { border:1px solid var(--border-soft); padding:24px; border-radius:16px; background:white; text-align:center; }
         .contact-item i { font-size:24px; color:var(--accent); margin-bottom:15px; }
         .contact-item h4 { color:var(--primary); font-weight:700; margin-bottom:5px; font-family:var(--heading-font); }
-        .contact-item p { font-size:14px; color:var(--text-light); }
-        .rights-text { border-top:1px solid var(--border-soft); padding-top:30px; font-size:13px; color:var(--text-light); }
+        .contact-item p { font-size:14px; color:var(--text-dark); }
+        .rights-text { border-top:1px solid var(--border-soft); padding-top:30px; font-size:13px; color:var(--text-dark); }
 
         /* ── RESPONSIVE ── */
         @media (max-width: 968px) {
@@ -614,6 +686,8 @@
             .inquiry-card-body { padding: 30px 20px 36px 20px; }
             .inquiry-header h2 { font-size:28px; }
             .form-trust-row { flex-direction:column; align-items:center; }
+            .hero-logo-fallback { flex-direction:column; text-align:center; }
+            .hero-logo-wordmark { text-align:center; }
         }
     </style>
 </head>
@@ -640,8 +714,17 @@
             <i class="fa-solid fa-puzzle-piece hero-doodle" style="font-size:28px; top:12%; right:18%; animation:float 7s ease-in-out infinite;"></i>
         </div>
 
-        <div class="logo-container" style="display:flex;justify-content:center;align-items:center;min-height:100px;margin-bottom:20px;">
-            <img src="logo.png" alt="HappiEdge Juniors Logo" style="max-height:100px;max-width:320px;object-fit:contain;" onerror="this.style.display='none'">
+        <!-- LOGO LOCKUP: tries real logo.png first, falls back to a styled text/icon logo so something ALWAYS shows centered -->
+        <div class="hero-logo-lockup">
+            <img src="logo.png" alt="HappiEdge Academy Logo"
+                 onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <div class="hero-logo-fallback" style="display:none;">
+                <div class="hero-logo-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+                <div class="hero-logo-wordmark">
+                    <div class="word-main">Happi<span>Edge</span></div>
+                    <div class="word-sub">Academy</div>
+                </div>
+            </div>
         </div>
 
         <div class="badge-hero"><i class="fa-solid fa-graduation-cap"></i> HappiEdge Juniors Campus</div>
@@ -707,7 +790,7 @@
                     <div class="cohort-info">
                         <h3>गट १: Early Risers (वय ३ ते ७ वर्षे)</h3>
                         <p>या वयात मुलांचा मेंदू ९०% विकसित होतो. त्यामुळे आम्ही पाठांतराला फाटा देऊन खेळांतून आणि कृतीद्वारे मुलांचा पाया भक्कम करतो.</p>
-                        <p style="font-weight:500;color:var(--text-dark);font-size:16px;"><span style="color:var(--accent);font-family:'Khand','Baloo 2',sans-serif;font-size:22px;font-weight:800;padding-right:5px;display:inline-block;">Early Riser साठी मुख्य Activities:</span> शारीरिक विकास, व मोटर स्किल्स साठी खेळ, योग आणि व्यायाम तसेच Creativity आणि बौद्धिक विकासासाठी अक्षरे, संख्या, आकार, रंग व भाषा ओळख आणि प्राथमिक संभाषण कौशल्य.</p>
+                        <p style="font-weight:700;color:var(--text-dark);font-size:16px;"><span style="color:var(--accent);font-family:'Khand','Baloo 2',sans-serif;font-size:22px;font-weight:800;padding-right:5px;display:inline-block;">Early Riser साठी मुख्य Activities:</span> शारीरिक विकास, व मोटर स्किल्स साठी खेळ, योग आणि व्यायाम तसेच Creativity आणि बौद्धिक विकासासाठी अक्षरे, संख्या, आकार, रंग व भाषा ओळख आणि प्राथमिक संभाषण कौशल्य.</p>
                     </div>
                     <div class="cohort-img-wrapper">
                         <img src="https://s3.ap-south-1.amazonaws.com/assets.klayschools.com/wp-content/uploads/2025/09/18162638/Montessori.webp" alt="Child building blocks">
@@ -758,7 +841,7 @@
                     <div class="cohort-info">
                         <h3>गट २: Risers (वय ८ ते ११ वर्षे)</h3>
                         <p>हा वयोगट शाळा आणि बाहेरील जग समजायला लागतो. येथे आम्ही मुलांचे गणित, सायन्स आणि भाषिक कौशल्य अगदी प्रगत पातळीवर नेतो.</p>
-                        <p style="font-weight:500;color:var(--text-dark);font-size:16px;"><span style="color:var(--primary);font-family:'Khand','Baloo 2',sans-serif;font-size:22px;font-weight:800;padding-right:5px;display:inline-block;">Risers साठी मुख्य भर:</span> तार्किक क्षमता, स्टेज डेअरिंग आणि प्रगत व्यवहारज्ञान.</p>
+                        <p style="font-weight:700;color:var(--text-dark);font-size:16px;"><span style="color:var(--primary);font-family:'Khand','Baloo 2',sans-serif;font-size:22px;font-weight:800;padding-right:5px;display:inline-block;">Risers साठी मुख्य भर:</span> तार्किक क्षमता, स्टेज डेअरिंग आणि प्रगत व्यवहारज्ञान.</p>
                     </div>
                     <div class="cohort-img-wrapper">
                         <img src="https://scotle.org/wp-content/uploads/2024/09/ThumNail_cmp.gif" alt="Kids doing science experiment">
@@ -1069,7 +1152,11 @@
     </footer>
 
     <!-- FLOATING WHATSAPP -->
-    <a href="https://wa.me/917058105058" class="float-cta" target="_blank" aria-label="WhatsApp वर संपर्क करा">
+    <!-- FLOATING SOCIAL BUTTONS -->
+    <a href="https://www.instagram.com/happiedgeacademy/?utm_source=ig_web_button_share_sheet" class="float-cta instagram" target="_blank" aria-label="Instagram वर बघा">
+        <i class="fa-brands fa-instagram"></i>
+    </a>
+    <a href="https://wa.me/917058105058" class="float-cta whatsapp" target="_blank" aria-label="WhatsApp वर संपर्क करा">
         <i class="fa-brands fa-whatsapp"></i>
     </a>
 
