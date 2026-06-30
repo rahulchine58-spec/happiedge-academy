@@ -117,52 +117,18 @@
         .float-cta.instagram { bottom:96px; background:radial-gradient(circle at 30% 110%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%); box-shadow:0 8px 24px rgba(214,36,159,.4); }
 
         /* ── NAV ── */
-        nav { background-color:rgba(253,251,247,.82); backdrop-filter:blur(12px); border-bottom:1px solid var(--border-soft); padding:15px 5%; display:flex; justify-content:space-between; align-items:center; position:sticky; top:0; z-index:100; transition:padding .3s ease, box-shadow .3s ease; }
-        nav.scrolled { padding:9px 5%; box-shadow:0 6px 24px rgba(0,0,0,.05); }
+        nav { background-color:rgba(253,251,247,.88); backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px); border-bottom:1px solid rgba(0,77,64,.08); padding:18px 6%; display:flex; justify-content:space-between; align-items:center; position:sticky; top:0; z-index:100; transition:padding .35s var(--cubic-bezier), box-shadow .35s ease, background-color .35s ease; }
+        nav.scrolled { padding:11px 6%; box-shadow:0 8px 30px rgba(0,77,64,.08); background-color:rgba(253,251,247,.96); }
         .logo-area { display:flex; align-items:center; gap:12px; }
+        .logo-text { transition: transform .3s ease; }
+        nav:hover .logo-text { transform: translateY(-1px); }
         .nav-logo-stack { display:flex; flex-direction:column; line-height:1.1; }
         .nav-logo-sub { font-size:11px; font-weight:700; color:var(--text-light); letter-spacing:.3px; }
         .logo-text { font-size:24px; font-weight:800; color:var(--primary); letter-spacing:-.5px; font-family:var(--heading-font); }
         .logo-text span { color:var(--accent); }
-        .cta-nav { background-color:var(--accent); color:white; border:none; padding:10px 24px; border-radius:30px; font-weight:700; cursor:pointer; text-decoration:none; transition:all .3s ease; box-shadow:0 4px 10px rgba(255,87,34,.2); font-family:var(--body-font); }
-        .cta-nav:hover { background-color:#e64a19; transform:translateY(-2px); }
-
-        /* ── NAV LINKS + DROPDOWN ── */
-        .nav-links { display:flex; align-items:center; gap:28px; }
-        .nav-link { font-family:var(--body-font); font-size:15px; font-weight:700; color:var(--text-dark); text-decoration:none; cursor:pointer; background:none; border:none; display:flex; align-items:center; gap:6px; transition:color .25s ease; }
-        .nav-link:hover { color:var(--accent); }
-        .nav-dropdown { position:relative; }
-        .nav-dropdown .dropdown-toggle i { font-size:11px; transition:transform .3s ease; }
-        .nav-dropdown.open .dropdown-toggle i { transform:rotate(180deg); }
-        .dropdown-menu {
-            position:absolute; top:calc(100% + 14px); left:50%; transform:translateX(-50%) translateY(-8px);
-            width:340px; background:white; border:1px solid var(--border-soft); border-radius:18px;
-            box-shadow:0 20px 50px rgba(0,0,0,.12); padding:10px; opacity:0; visibility:hidden;
-            transition:all .25s ease; z-index:150;
-        }
-        .nav-dropdown.open .dropdown-menu { opacity:1; visibility:visible; transform:translateX(-50%) translateY(0); }
-        .dropdown-item { display:flex; align-items:flex-start; gap:12px; padding:13px 14px; border-radius:12px; text-decoration:none; cursor:pointer; transition:background .2s ease; }
-        .dropdown-item:hover { background:#fff8f0; }
-        .dropdown-item .item-icon { width:34px; height:34px; border-radius:50%; flex-shrink:0; display:flex; align-items:center; justify-content:center; font-size:14px; margin-top:2px; background:#e0f2f1; color:var(--primary); }
-        .dropdown-item.locked .item-icon { background:#fff3e0; color:var(--amber); }
-        .dropdown-item .item-title { display:block; font-weight:800; font-size:14.5px; color:var(--text-dark); font-family:var(--heading-font); }
-        .dropdown-item .item-desc { display:block; font-size:12.5px; color:var(--text-light); font-weight:600; margin-top:2px; line-height:1.4; }
-        .dropdown-item .soon-pill { margin-left:6px; vertical-align:middle; }
-        .dropdown-divider { height:1px; background:var(--border-soft); margin:6px 10px; }
-
-        /* ── MOBILE HAMBURGER ── */
-        .nav-hamburger { display:none; background:none; border:none; font-size:22px; color:var(--primary); cursor:pointer; padding:6px; }
-
-        /* ── COMING SOON TOAST ── */
-        .coming-soon-toast {
-            position:fixed; bottom:30px; left:50%; transform:translateX(-50%) translateY(20px);
-            background:var(--bg-dark); color:white; padding:14px 26px; border-radius:30px;
-            font-family:var(--body-font); font-weight:700; font-size:14px; display:flex; align-items:center; gap:10px;
-            box-shadow:0 14px 40px rgba(0,0,0,.3); z-index:500; opacity:0; pointer-events:none;
-            transition:all .35s var(--cubic-bezier);
-        }
-        .coming-soon-toast.show { opacity:1; transform:translateX(-50%) translateY(0); }
-        .coming-soon-toast i { color:var(--amber); }
+        .cta-nav { background: linear-gradient(135deg, var(--accent) 0%, #ff7043 100%); color:white; border:none; padding:12px 28px; border-radius:30px; font-weight:800; font-size:14.5px; letter-spacing:.2px; cursor:pointer; text-decoration:none; transition:all .35s var(--cubic-bezier); box-shadow:0 6px 18px rgba(255,87,34,.28); font-family:var(--body-font); display:inline-flex; align-items:center; gap:8px; }
+        .cta-nav:hover { background: linear-gradient(135deg, #e64a19 0%, var(--accent) 100%); transform:translateY(-2px); box-shadow:0 10px 26px rgba(255,87,34,.4); }
+        .cta-nav:active { transform:translateY(0); box-shadow:0 4px 14px rgba(255,87,34,.3); }
 
         /* ── ABOUT US SECTION ── */
         .about-section { padding:80px 5%; text-align:center; background:#fff8f0; }
@@ -179,6 +145,141 @@
         @media (max-width: 968px) {
             .about-grid { grid-template-columns:1fr; text-align:center; }
             .about-points li { text-align:left; }
+        }
+
+        /* ── PREMIUM FEATURE GRID CARDS (Programmes / Differentiators) ── */
+        .feature-block {
+            max-width: 1100px;
+            margin: 64px auto 0 auto;
+            padding: 0 20px;
+            text-align: center;
+        }
+
+        .feature-block-header {
+            margin-bottom: 36px;
+        }
+
+        .feature-block-icon-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(0,77,64,.08);
+            color: var(--primary);
+            padding: 7px 18px;
+            border-radius: 30px;
+            font-size: 13px;
+            font-weight: 800;
+            letter-spacing: .5px;
+            margin-bottom: 14px;
+        }
+
+        .feature-block h3 {
+            font-size: 28px;
+            font-weight: 800;
+            color: var(--primary);
+            font-family: var(--heading-font);
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+            text-align: left;
+        }
+
+        .feature-grid.cols-3 {
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        .feature-card {
+            background: white;
+            border: 1px solid var(--border-soft);
+            border-radius: 22px;
+            padding: 32px;
+            transition: transform .3s var(--cubic-bezier), box-shadow .3s var(--cubic-bezier), border-color .3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 4px; height: 0;
+            background: linear-gradient(to bottom, var(--primary), var(--primary-light));
+            transition: height .35s var(--cubic-bezier);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 45px rgba(0,77,64,.12);
+            border-color: var(--primary-light);
+        }
+
+        .feature-card:hover::before {
+            height: 100%;
+        }
+
+        .feature-card-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 16px;
+            background: linear-gradient(135deg, rgba(0,77,64,.1), rgba(0,121,107,.06));
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            margin-bottom: 20px;
+            transition: transform .35s var(--cubic-bezier), background .35s ease;
+        }
+
+        .feature-card:hover .feature-card-icon {
+            transform: scale(1.08) rotate(-4deg);
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: white;
+        }
+
+        .feature-card.accent-card .feature-card-icon {
+            background: linear-gradient(135deg, rgba(255,87,34,.1), rgba(255,179,0,.08));
+            color: var(--accent);
+        }
+
+        .feature-card.accent-card:hover .feature-card-icon {
+            background: linear-gradient(135deg, var(--accent), var(--amber));
+            color: white;
+        }
+
+        .feature-card.accent-card::before {
+            background: linear-gradient(to bottom, var(--accent), var(--amber));
+        }
+
+        .feature-card h4 {
+            font-size: 19px;
+            font-weight: 800;
+            color: var(--primary);
+            font-family: var(--heading-font);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .feature-card p {
+            font-size: 15px;
+            color: var(--text-dark);
+            font-weight: 600;
+            line-height: 1.7;
+        }
+
+        .feature-card .soon-pill {
+            font-size: 9px;
+            padding: 3px 9px;
+        }
+
+        @media (max-width: 968px) {
+            .feature-grid, .feature-grid.cols-3 { grid-template-columns: 1fr; }
         }
 
         /* ── HERO ── */
@@ -581,25 +682,27 @@
             border-radius: 14px;
             padding: 15px 16px 15px 44px;
             font-size: 15px;
+            font-weight: 600;
             color: white;
             outline: none;
-            transition: all .3s ease;
+            transition: border-color .3s ease, background .3s ease, box-shadow .3s ease, transform .2s ease;
             font-family: var(--body-font);
             -webkit-appearance: none;
         }
 
-        .input-wrap input::placeholder { color: #64748b; }
+        .input-wrap input::placeholder { color: #64748b; font-weight: 500; }
 
         .input-wrap input:focus,
         .input-wrap select:focus {
-            border-color: var(--accent);
-            background: rgba(255,87,34,.06);
-            box-shadow: 0 0 0 4px rgba(255,87,34,.1);
+            border-color: var(--primary-light);
+            background: rgba(0,121,107,.1);
+            box-shadow: 0 0 0 4px rgba(0,121,107,.18);
+            transform: translateY(-1px);
         }
 
         .input-wrap input:focus ~ .input-icon,
         .input-wrap select:focus ~ .input-icon {
-            color: var(--accent);
+            color: var(--primary-light);
         }
 
         /* Date input special */
@@ -810,61 +913,8 @@
         <div class="logo-area">
             <span class="logo-text">HappiEdge<span> Academy</span></span>
         </div>
-
-        <div class="nav-links" id="navLinks">
-            <a href="#top" class="nav-link">Home</a>
-            <a href="#vision" class="nav-link">Vision/Mission</a>
-            <a href="#about" class="nav-link">About Us</a>
-
-            <div class="nav-dropdown" id="programmesDropdown">
-                <button class="nav-link dropdown-toggle" onclick="toggleDropdown(event)">
-                    Programmes <i class="fa-solid fa-chevron-down"></i>
-                </button>
-                <div class="dropdown-menu">
-                    <a href="#curriculum" class="dropdown-item" onclick="closeDropdown()">
-                        <div class="item-icon"><i class="fa-solid fa-circle-check"></i></div>
-                        <div>
-                            <span class="item-title">Daily Academy Programmes</span>
-                            <span class="item-desc">Early Risers, Risers, Commanders, Leaders — रोजचा अभ्यासक्रम</span>
-                        </div>
-                    </a>
-                    <div class="dropdown-divider"></div>
-                    <div class="dropdown-item locked" onclick="showComingSoon('Keynote Speaking Programmes')">
-                        <div class="item-icon"><i class="fa-solid fa-lock"></i></div>
-                        <div>
-                            <span class="item-title">Keynote Speaking <span class="soon-pill"><i class="fa-solid fa-lock"></i> Soon</span></span>
-                            <span class="item-desc">शाळांसाठी प्रेरणादायी सेशन्स व सेमिनार्स</span>
-                        </div>
-                    </div>
-                    <div class="dropdown-item locked" onclick="showComingSoon('School Leadership Programmes')">
-                        <div class="item-icon"><i class="fa-solid fa-lock"></i></div>
-                        <div>
-                            <span class="item-title">School Leadership <span class="soon-pill"><i class="fa-solid fa-lock"></i> Soon</span></span>
-                            <span class="item-desc">रामायण, छत्रपती शिवाजी महाराज, कृष्णनीती यांवर आधारित मूल्य व नेतृत्व विकास</span>
-                        </div>
-                    </div>
-                    <div class="dropdown-item locked" onclick="showComingSoon('Skill & Leadership Development')">
-                        <div class="item-icon"><i class="fa-solid fa-lock"></i></div>
-                        <div>
-                            <span class="item-title">Skill &amp; Leadership Development <span class="soon-pill"><i class="fa-solid fa-lock"></i> Soon</span></span>
-                            <span class="item-desc">इतर कौशल्य विकास व नेतृत्व उपक्रम</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <a href="#inquiry" class="nav-link">Contact</a>
-        </div>
-
-        <a href="#inquiry" class="cta-nav ripple-btn">आजच संपर्क करा</a>
-        <button class="nav-hamburger" onclick="toggleMobileNav()" aria-label="Menu"><i class="fa-solid fa-bars"></i></button>
+        <a href="#inquiry" class="cta-nav ripple-btn"><i class="fa-solid fa-paper-plane" style="font-size:13px;"></i> आजच संपर्क करा</a>
     </nav>
-
-    <!-- COMING SOON TOAST -->
-    <div class="coming-soon-toast" id="comingSoonToast">
-        <i class="fa-solid fa-circle-info"></i>
-        <span id="comingSoonText"></span>
-    </div>
 
     <!-- HERO -->
     <section class="hero animate-fade-up" id="top">
@@ -911,7 +961,7 @@
                 <img src="https://s3.ap-south-1.amazonaws.com/assets.klayschools.com/wp-content/uploads/2025/09/18162638/Montessori.webp" alt="HappiEdge Academy students">
             </div>
             <div class="about-text reveal">
-                <p>HappiEdge Academy ही एक आधुनिक बाल विकास संस्था आहे, जी पाठांतर आणि घोकंपट्टी सारख्या पारंपरिक पद्धतीला फाटा देऊन खेळ, अनुभव आणि कृतीतून शिक्षण देण्यावर विश्वास ठेवते. मुलांच्या अंगभूत कौशल्यांचा शोध घेऊन त्यांचा पाया भक्कम करणे हे आमचे मुख्य ध्येय आहे.</p>
+                <p>HappiEdge Academy ही सिन्नरमधील एक आधुनिक बाल विकास संस्था आहे, जी पारंपरिक पाठांतर पद्धतीला फाटा देऊन खेळ, अनुभव आणि कृतीतून शिक्षण देण्यावर विश्वास ठेवते. आमचं पहिलं पाऊल आहे <strong>HappiEdge Jr.</strong> — ३ ते १२ वयोगटातील मुलांसाठीचा रोजचा Junior Campus प्रोग्राम.</p>
                 <p>याच पायावर आम्ही टप्प्याटप्प्याने मोठ्या वयोगटासाठी आणि शाळांसाठी मूल्य व नेतृत्व विकासाचे विशेष कार्यक्रम घडवत आहोत.</p>
                 <ul class="about-points">
                     <li><i class="fa-solid fa-circle-check"></i> खेळ व अनुभव आधारित शिक्षण पद्धती</li>
@@ -919,6 +969,51 @@
                     <li><i class="fa-solid fa-circle-check"></i> सिन्नर येथे प्रत्यक्ष Junior Campus कार्यरत</li>
                     <li><i class="fa-solid fa-circle-check"></i> शाळा व विद्यार्थ्यांसाठी नेतृत्व विकास कार्यक्रम लवकरच</li>
                 </ul>
+            </div>
+        </div>
+
+        <!-- आमचे प्रमुख उपक्रम -->
+        <div class="feature-block reveal">
+            <div class="feature-block-header">
+                <span class="feature-block-icon-tag"><i class="fa-solid fa-layer-group"></i> उपक्रम</span>
+                <h3>आमचे प्रमुख उपक्रम</h3>
+            </div>
+            <div class="feature-grid">
+                <div class="feature-card reveal tilt-card">
+                    <div class="feature-card-icon"><i class="fa-solid fa-child-reaching"></i></div>
+                    <h4>HappiEdge Jr. (Junior Campus)</h4>
+                    <p>३ ते १२ वयोगटातील मुलांसाठीचा एक नाविन्यपूर्ण प्रोग्राम. यामध्ये खेळ आणि प्रयोगांच्या माध्यमातून गणित, विज्ञान आणि भाषा विषयांची गोडी निर्माण केली जाते.</p>
+                </div>
+                <div class="feature-card accent-card reveal tilt-card">
+                    <div class="feature-card-icon"><i class="fa-solid fa-seedling"></i></div>
+                    <h4>भविष्यातील उपक्रम <span class="soon-pill"><i class="fa-solid fa-lock"></i> Soon</span></h4>
+                    <p>शालेय विद्यार्थ्यांसाठी नेतृत्व विकास (Leadership Development) आणि मूल्यवर्धन कार्यक्रम, जे त्यांना भविष्यातील आव्हानांसाठी सक्षम बनवतात.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- आम्ही काय वेगळे करतो -->
+        <div class="feature-block reveal">
+            <div class="feature-block-header">
+                <span class="feature-block-icon-tag"><i class="fa-solid fa-star"></i> वैशिष्ट्य</span>
+                <h3>आम्ही काय वेगळे करतो?</h3>
+            </div>
+            <div class="feature-grid cols-3">
+                <div class="feature-card reveal tilt-card">
+                    <div class="feature-card-icon"><i class="fa-solid fa-hands-holding-child"></i></div>
+                    <h4>अनुभवजन्य शिक्षण</h4>
+                    <p>केवळ पुस्तकी ज्ञान नाही, तर प्रत्यक्ष कृतीतून शिकण्यावर भर.</p>
+                </div>
+                <div class="feature-card reveal tilt-card">
+                    <div class="feature-card-icon"><i class="fa-solid fa-scale-balanced"></i></div>
+                    <h4>समतोल विकास</h4>
+                    <p>अभ्यासासोबतच शारीरिक व व्यक्तिमत्त्व विकासाला (Holistic Development) प्राधान्य.</p>
+                </div>
+                <div class="feature-card reveal tilt-card">
+                    <div class="feature-card-icon"><i class="fa-solid fa-microchip"></i></div>
+                    <h4>प्रगत शिक्षण पद्धती</h4>
+                    <p>आधुनिक शैक्षणिक तंत्रज्ञान आणि पारंपरिक मूल्यांचा अचूक मेळ.</p>
+                </div>
             </div>
         </div>
     </section>
@@ -1264,6 +1359,15 @@
                                 </div>
                             </div>
 
+                            <!-- 6. Email Address -->
+                            <div class="form-group full">
+                                <label><i class="fa-solid fa-envelope"></i> Email Address</label>
+                                <div class="input-wrap">
+                                    <input type="email" id="parent-email" placeholder="उदा. name@example.com" autocomplete="email">
+                                    <i class="fa-solid fa-at input-icon"></i>
+                                </div>
+                            </div>
+
                             <!-- Submit -->
                             <div class="form-group full" style="margin-top:8px;">
                                 <button class="inquiry-submit ripple-btn" onclick="submitInquiry()">
@@ -1321,7 +1425,7 @@
             <div class="contact-item reveal">
                 <i class="fa-solid fa-globe"></i>
                 <h4>वेबसाईट</h4>
-                <p>www.happiedgeacademy.com</p>
+                <p>Under Construction</p>
             </div>
         </div>
         <div class="rights-text">
@@ -1369,6 +1473,7 @@
             const wa      = document.getElementById('wa-number').value.trim();
             const sName   = document.getElementById('student-name').value.trim();
             const dob     = document.getElementById('student-dob').value;
+            const email   = document.getElementById('parent-email').value.trim();
 
             if (!pName || !contact || !sName || !dob) {
                 shakeForm();
@@ -1394,6 +1499,7 @@
                         'WhatsApp क्रमांक'   : wa || contact,
                         'विद्यार्थ्याचे नाव' : sName,
                         'जन्म तारीख'         : dob,
+                        'Email'              : email || '-',
                         '_subject'           : `नवीन चौकशी — ${sName} (${pName})`
                     })
                 });
@@ -1409,8 +1515,9 @@
                 `📞 *संपर्क क्रमांक:* ${contact}\n` +
                 `💬 *WhatsApp:* ${wa || contact}\n` +
                 `🎒 *विद्यार्थ्याचे नाव:* ${sName}\n` +
-                `🎂 *जन्म तारीख:* ${dob}\n\n` +
-                `— HappiEdge Juniors Campus, Sinnar`
+                `🎂 *जन्म तारीख:* ${dob}\n` +
+                (email ? `📧 *Email:* ${email}\n` : ``) +
+                `\n— HappiEdge Juniors Campus, Sinnar`
             );
             window.open(`https://wa.me/917058105058?text=${msg}`, '_blank');
 
@@ -1464,45 +1571,6 @@
         }
 
         /* ── ACCORDION ── */
-        /* ── NAV: PROGRAMMES DROPDOWN ── */
-        function toggleDropdown(e) {
-            e.preventDefault();
-            e.stopPropagation();
-            document.getElementById('programmesDropdown').classList.toggle('open');
-        }
-        function closeDropdown() {
-            document.getElementById('programmesDropdown').classList.remove('open');
-        }
-        document.addEventListener('click', function (e) {
-            const dropdown = document.getElementById('programmesDropdown');
-            if (dropdown && !dropdown.contains(e.target)) {
-                dropdown.classList.remove('open');
-            }
-        });
-
-        /* ── NAV: MOBILE HAMBURGER ── */
-        function toggleMobileNav() {
-            document.getElementById('navLinks').classList.toggle('mobile-open');
-        }
-        document.querySelectorAll('.nav-links > a.nav-link').forEach(link => {
-            link.addEventListener('click', () => {
-                document.getElementById('navLinks').classList.remove('mobile-open');
-            });
-        });
-
-        /* ── COMING SOON TOAST ── */
-        let toastTimer;
-        function showComingSoon(programName) {
-            const toast = document.getElementById('comingSoonToast');
-            const textEl = document.getElementById('comingSoonText');
-            textEl.textContent = programName + ' — लवकरच उपलब्ध होईल!';
-            toast.classList.add('show');
-            closeDropdown();
-            document.getElementById('navLinks').classList.remove('mobile-open');
-            clearTimeout(toastTimer);
-            toastTimer = setTimeout(() => toast.classList.remove('show'), 3000);
-        }
-
         function toggleAccordion(el) {
             const isActive = el.classList.contains('active');
             document.querySelectorAll('.accordion-item').forEach(i => i.classList.remove('active'));
