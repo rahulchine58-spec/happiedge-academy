@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HappiEdge Academy - Digital Store</title>
+    <title>HappiEdge Academy - Kids Campus & Digital Store</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Rozha+One&family=Khand:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;500;700;800&display=swap" rel="stylesheet">
@@ -17,18 +17,43 @@
             --accent-light: #ffebee;
             --amber: #ffb300;
             --bg-linen: #fdfbf7;
+            --bg-dark: #0f172a;
             --text-dark: #1e293b;
             --text-light: #64748b;
             --border-soft: #eae3d2;
+            --cubic-bezier: cubic-bezier(0.16, 1, 0.3, 1);
             --heading-font: 'Baloo 2', 'Noto Sans Devanagari', sans-serif;
             --body-font: 'Plus Jakarta Sans', 'Noto Sans Devanagari', sans-serif;
         }
 
-        * { box-sizing: border-box; margin: 0; padding: 0; scroll-behavior: smooth; }
-        body { font-family: var(--body-font); background-color: var(--bg-linen); color: var(--text-dark); line-height: 1.6; }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--body-font);
+            background-color: var(--bg-linen);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 4px;
+            width: 0%;
+            background: linear-gradient(90deg, var(--primary), var(--accent), var(--amber));
+            z-index: 999;
+            transition: width 0.1s ease-out;
+        }
 
         nav {
-            background-color: rgba(253, 251, 247, 0.9);
+            background-color: rgba(253, 251, 247, 0.82);
             backdrop-filter: blur(12px);
             border-bottom: 1px solid var(--border-soft);
             padding: 15px 5%;
@@ -40,37 +65,67 @@
             z-index: 100;
         }
 
-        .logo-text { font-size: 24px; font-weight: 800; color: var(--primary); font-family: var(--heading-font); text-decoration: none; }
-        .logo-text span { color: var(--accent); }
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
 
-        .nav-links { display: flex; gap: 25px; align-items: center; }
-        .nav-links a { text-decoration: none; color: var(--text-dark); font-weight: 600; font-size: 15px; transition: color 0.3s; }
-        .nav-links a:hover, .nav-links a.active { color: var(--accent); }
+        .logo-text {
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--primary);
+            font-family: var(--heading-font);
+            text-decoration: none;
+        }
+
+        .logo-text span {
+            color: var(--accent);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 600;
+            font-size: 15px;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
 
         .cta-nav {
             background-color: var(--accent);
             color: white;
-            padding: 10px 22px;
+            border: none;
+            padding: 10px 24px;
             border-radius: 30px;
             font-weight: 700;
+            cursor: pointer;
             text-decoration: none;
+            transition: all 0.3s ease;
             box-shadow: 0 4px 10px rgba(255, 87, 34, 0.2);
         }
 
-        /* DIGITAL STORE MARKETPLACE SECTION */
-        .store-section {
-            padding: 80px 5%;
-            max-width: 1200px;
-            margin: 0 auto;
-            min-height: 70vh;
+        .cta-nav:hover {
+            background-color: #e64a19;
+            transform: translateY(-2px);
         }
 
-        .store-header {
+        /* HERO SECTION */
+        .hero {
+            padding: 70px 5% 50px 5%;
             text-align: center;
-            margin-bottom: 50px;
+            position: relative;
         }
 
-        .badge-store {
+        .badge-hero {
             background-color: var(--accent-light);
             border: 1px solid rgba(255, 87, 34, 0.3);
             color: var(--accent);
@@ -79,29 +134,403 @@
             font-size: 14px;
             font-weight: 700;
             display: inline-flex;
+            align-items: center;
             gap: 8px;
             margin-bottom: 20px;
         }
 
-        .store-header h1 {
-            font-size: 42px;
+        .hero h1 {
+            font-size: 50px;
+            color: var(--primary);
+            font-weight: 800;
+            line-height: 1.25;
+            max-width: 950px;
+            margin: 0 auto 20px auto;
+            font-family: var(--heading-font);
+        }
+
+        .hero h1 span {
+            color: var(--accent);
+        }
+
+        .hero-desc {
+            font-size: 19px;
+            color: var(--text-light);
+            max-width: 800px;
+            margin: 0 auto 40px auto;
+        }
+
+        /* VISION & MISSION */
+        .vision-mission-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            max-width: 1100px;
+            margin: 0 auto 50px auto;
+            padding: 0 20px;
+        }
+
+        .vm-card {
+            background-color: white;
+            border: 1px solid var(--border-soft);
+            border-radius: 24px;
+            padding: 40px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.02);
+            text-align: left;
+        }
+
+        .vm-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: var(--accent-light);
+            color: var(--accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            margin-bottom: 24px;
+        }
+
+        .vm-card.mission .vm-icon {
+            background-color: rgba(0, 121, 107, 0.1);
+            color: var(--primary);
+        }
+
+        .vm-card h2 {
+            font-size: 24px;
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-family: var(--heading-font);
+        }
+
+        .vm-card p {
+            color: var(--text-light);
+            font-size: 16px;
+        }
+
+        /* JOURNEY SECTION */
+        .journey-section {
+            padding: 50px 5% 70px 5%;
+            text-align: center;
+        }
+
+        .journey-eyebrow {
+            color: var(--accent);
+            font-weight: 800;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-size: 13px;
+            margin-bottom: 10px;
+        }
+
+        .journey-section h2 {
+            font-size: 34px;
+            color: var(--primary);
+            font-weight: 800;
+            margin-bottom: 40px;
+            font-family: var(--heading-font);
+        }
+
+        .journey-wrap {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .journey-stops {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin-top: 20px;
+        }
+
+        .journey-stop .dot {
+            width: 54px;
+            height: 54px;
+            border-radius: 50%;
+            background: white;
+            border: 3px solid var(--accent);
+            color: var(--accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            margin: 0 auto 12px auto;
+        }
+
+        .journey-stop:nth-child(odd) .dot {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        .journey-stop .age-label {
+            font-weight: 800;
+            color: var(--text-dark);
+            font-family: var(--heading-font);
+            font-size: 15px;
+        }
+
+        .journey-stop .age-desc {
+            color: var(--text-light);
+            font-size: 13px;
+        }
+
+        .stats-strip {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            max-width: 1000px;
+            margin: 45px auto 0 auto;
+        }
+
+        .stat-box {
+            background: white;
+            border: 1px solid var(--border-soft);
+            border-radius: 18px;
+            padding: 24px 12px;
+        }
+
+        .stat-number {
+            font-family: 'Khand', var(--heading-font);
+            font-size: 38px;
+            font-weight: 800;
+            color: var(--accent);
+        }
+
+        .stat-box:nth-child(even) .stat-number { color: var(--primary); }
+
+        .stat-label {
+            font-size: 13px;
+            color: var(--text-light);
+            font-weight: 600;
+            margin-top: 6px;
+        }
+
+        /* SECTION SELECTOR & TABS */
+        .section-selector {
+            text-align: center;
+            padding: 40px 0 20px 0;
+            background: #fff8f0;
+            border-top: 1px solid var(--border-soft);
+            border-bottom: 1px solid var(--border-soft);
+        }
+
+        .section-selector h2 {
+            font-size: 30px;
+            color: var(--primary);
+            margin-bottom: 25px;
+            font-family: var(--heading-font);
+        }
+
+        .tab-buttons {
+            display: inline-flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 6px;
+            background: white;
+            padding: 8px;
+            border-radius: 50px;
+            border: 1px solid var(--border-soft);
+            margin-bottom: 30px;
+        }
+
+        .tab-btn {
+            padding: 12px 24px;
+            border-radius: 40px;
+            border: none;
+            background: transparent;
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--text-light);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .tab-btn.active {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .cohort-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .cohort-view {
+            display: none;
+        }
+
+        .cohort-view.active {
+            display: block;
+        }
+
+        .cohort-card {
+            background: white;
+            border: 1px solid var(--border-soft);
+            border-radius: 30px;
+            padding: 40px;
+            margin-bottom: 40px;
+        }
+
+        .cohort-intro-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 30px;
+            align-items: center;
+            border-bottom: 2px solid var(--border-soft);
+            padding-bottom: 30px;
+            margin-bottom: 30px;
+        }
+
+        .cohort-info h3 {
+            font-size: 32px;
+            color: var(--primary);
+            font-weight: 800;
+            margin-bottom: 12px;
+            font-family: var(--heading-font);
+        }
+
+        .cohort-info p {
+            font-size: 16px;
+            color: var(--text-light);
+            margin-bottom: 15px;
+        }
+
+        .cohort-img-wrapper {
+            border-radius: 20px;
+            overflow: hidden;
+            height: 220px;
+            border: 2px solid var(--border-soft);
+        }
+
+        .cohort-img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .pillars-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .pillar-card {
+            background: #fafaf5;
+            border: 1px solid var(--border-soft);
+            border-radius: 18px;
+            padding: 24px;
+        }
+
+        .pillar-card h4 {
+            font-size: 18px;
+            color: var(--primary);
+            font-weight: 700;
+            margin-bottom: 10px;
+            font-family: var(--heading-font);
+        }
+
+        .pillar-card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .pillar-card li {
+            font-size: 14px;
+            color: var(--text-light);
+            margin-bottom: 8px;
+            position: relative;
+            padding-left: 18px;
+        }
+
+        .pillar-card li::before {
+            content: '•';
+            color: var(--accent);
+            position: absolute;
+            left: 0;
+        }
+
+        /* DAILY SCHEDULE */
+        .schedule-section {
+            padding: 60px 5%;
+            text-align: center;
+        }
+
+        .schedule-section h2 {
+            font-size: 34px;
+            color: var(--primary);
+            font-weight: 800;
+            margin-bottom: 30px;
+            font-family: var(--heading-font);
+        }
+
+        .schedule-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 18px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .schedule-card {
+            background: white;
+            border: 1px solid var(--border-soft);
+            border-radius: 18px;
+            padding: 24px;
+            border-top: 6px solid var(--primary);
+            text-align: left;
+        }
+
+        .schedule-card.accent { border-top-color: var(--accent); }
+
+        .schedule-card h3 {
+            font-size: 17px;
+            color: var(--primary);
+            margin-bottom: 8px;
+            font-weight: 700;
+            font-family: var(--heading-font);
+        }
+
+        .schedule-card p {
+            font-size: 13px;
+            color: var(--text-light);
+        }
+
+        /* DIGITAL STORE SECTION (PLACED RIGHT BEFORE FOOTER) */
+        .store-section {
+            padding: 60px 5%;
+            background: #f8fafc;
+            border-top: 1px solid var(--border-soft);
+            border-bottom: 1px solid var(--border-soft);
+        }
+
+        .store-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .store-header h2 {
+            font-size: 34px;
             color: var(--primary);
             font-weight: 800;
             font-family: var(--heading-font);
-            margin-bottom: 15px;
+            margin-bottom: 10px;
         }
 
         .store-header p {
             color: var(--text-light);
-            font-size: 18px;
-            max-width: 700px;
-            margin: 0 auto;
+            font-size: 16px;
         }
 
         .products-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
+            gap: 25px;
+            max-width: 1100px;
+            margin: 0 auto;
         }
 
         .product-card {
@@ -114,12 +543,6 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            transition: transform 0.3s ease;
-        }
-
-        .product-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 16px 35px rgba(0,77,64,0.08);
         }
 
         .product-badge {
@@ -128,7 +551,7 @@
             left: 15px;
             background: #64748b;
             color: white;
-            padding: 5px 12px;
+            padding: 4px 12px;
             border-radius: 20px;
             font-size: 11px;
             font-weight: 800;
@@ -137,17 +560,17 @@
         }
 
         .product-img-wrap {
-            height: 200px;
+            height: 180px;
             background: #f1f5f9;
             display: flex;
             align-items: center;
             justify-content: center;
             color: var(--text-light);
-            font-size: 48px;
+            font-size: 42px;
         }
 
         .product-body {
-            padding: 24px;
+            padding: 22px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -155,17 +578,17 @@
         }
 
         .product-title {
-            font-size: 20px;
+            font-size: 18px;
             color: var(--primary);
             font-weight: 800;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
             font-family: var(--heading-font);
         }
 
         .product-desc {
-            font-size: 14px;
+            font-size: 13px;
             color: var(--text-light);
-            margin-bottom: 20px;
+            margin-bottom: 18px;
         }
 
         .product-footer {
@@ -173,18 +596,18 @@
             align-items: center;
             justify-content: space-between;
             border-top: 1px solid var(--border-soft);
-            padding-top: 18px;
+            padding-top: 15px;
         }
 
         .price-box .current-price {
-            font-size: 22px;
+            font-size: 20px;
             font-weight: 800;
             color: var(--accent);
             font-family: 'Khand', sans-serif;
         }
 
         .price-box .original-price {
-            font-size: 13px;
+            font-size: 12px;
             color: var(--text-light);
             text-decoration: line-through;
         }
@@ -193,14 +616,14 @@
             background-color: #cbd5e1;
             color: white;
             border: none;
-            padding: 9px 18px;
+            padding: 8px 16px;
             border-radius: 20px;
             font-weight: 700;
             font-size: 13px;
             cursor: not-allowed;
             display: inline-flex;
             align-items: center;
-            gap: 6px;
+            gap: 5px;
         }
 
         /* FOOTER */
@@ -211,51 +634,252 @@
             text-align: center;
         }
 
-        .footer-logo { font-size: 30px; font-weight: 800; color: var(--primary); margin-bottom: 12px; font-family: var(--heading-font); }
+        .footer-logo {
+            font-size: 30px;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 12px;
+            font-family: var(--heading-font);
+        }
+
         .footer-logo span { color: var(--accent); }
-        .footer-desc { color: var(--text-light); max-width: 600px; margin: 0 auto 30px auto; font-size: 15px; }
-        .contact-info-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; max-width: 1000px; margin: 0 auto 35px auto; text-align: left; }
-        .contact-item { border: 1px solid var(--border-soft); padding: 22px; border-radius: 16px; background: white; }
-        .contact-item i { font-size: 22px; color: var(--accent); margin-bottom: 12px; }
-        .contact-item h4 { color: var(--primary); font-weight: 700; margin-bottom: 6px; font-size: 16px; }
-        .contact-item p { font-size: 13px; color: var(--text-light); line-height: 1.5; }
-        .rights-text { border-top: 1px solid var(--border-soft); padding-top: 25px; font-size: 13px; color: var(--text-light); }
+
+        .footer-desc {
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto 30px auto;
+            font-size: 15px;
+        }
+
+        .contact-info-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            max-width: 1000px;
+            margin: 0 auto 35px auto;
+            text-align: left;
+        }
+
+        .contact-item {
+            border: 1px solid var(--border-soft);
+            padding: 22px;
+            border-radius: 16px;
+            background: white;
+        }
+
+        .contact-item i {
+            font-size: 22px;
+            color: var(--accent);
+            margin-bottom: 12px;
+        }
+
+        .contact-item h4 {
+            color: var(--primary);
+            font-weight: 700;
+            margin-bottom: 6px;
+            font-size: 16px;
+        }
+
+        .contact-item p {
+            font-size: 13px;
+            color: var(--text-light);
+            line-height: 1.5;
+        }
+
+        .rights-text {
+            border-top: 1px solid var(--border-soft);
+            padding-top: 25px;
+            font-size: 13px;
+            color: var(--text-light);
+        }
 
         @media (max-width: 968px) {
-            .products-grid, .contact-info-grid { grid-template-columns: 1fr; }
-            .store-header h1 { font-size: 32px; }
+            .vision-mission-grid, .pillars-grid, .cohort-intro-grid, .schedule-grid, .contact-info-grid, .products-grid, .journey-stops, .stats-strip {
+                grid-template-columns: 1fr;
+            }
+            .hero h1 { font-size: 36px; }
         }
     </style>
 </head>
 <body>
 
+    <div class="scroll-progress" id="scrollProgress"></div>
+
     <!-- NAV BAR -->
     <nav>
-        <a href="index.html" class="logo-text">HappiEdge<span> Academy</span></a>
+        <div class="logo-area">
+            <a href="#" class="logo-text">HappiEdge<span> Academy</span></a>
+        </div>
         <div class="nav-links">
-            <a href="index.html">Home</a>
-            <a href="store.html" class="active">Digital Store</a>
+            <a href="#curriculum">Programs</a>
+            <a href="#schedule">Schedule</a>
+            <a href="#store">Digital Store</a>
             <a href="#contact" class="cta-nav">संपर्क करा</a>
         </div>
     </nav>
 
-    <!-- DIGITAL STORE MARKETPLACE SECTION -->
-    <section class="store-section">
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="badge-hero"><i class="fa-solid fa-graduation-cap"></i> HappiEdge Juniors Campus</div>
+        <h1>Future Ready Leaders..! घडवण्याची <span>आधुनिक प्रयोगशाळा</span></h1>
+        <p class="hero-desc">आम्ही विद्यार्थ्यांच्या त्यांच्या क्षमतांना ओळखण्यासाठी वातावरण निर्माण करतो त्यामुळे मुले स्वतः त्यांच्या विकासासाठी सज्ज होतात.</p>
+        
+        <!-- VISION & MISSION -->
+        <div class="vision-mission-grid">
+            <div class="vm-card">
+                <div class="vm-icon"><i class="fa-solid fa-eye"></i></div>
+                <h2>दृष्टिकोन (Our Vision)</h2>
+                <p>"मानवी मूल्ये, संस्कार, खेळ, अनुभव आणि शालेय शिक्षण यांचा समतोल साधत प्रत्येक मुलाच्या सर्वांगीण विकासाचा भक्कम पाया तयार करणे व Future Ready पिढी घडवणे."</p>
+            </div>
+            <div class="vm-card mission">
+                <div class="vm-icon"><i class="fa-solid fa-bullseye"></i></div>
+                <h2>ध्येय (Our Mission)</h2>
+                <p>विद्यार्थ्यांचा सर्वांगीण विकास घडविण्यासाठी खेळ, अनुभव आधारित शिक्षण, गाणी, गोष्टी, संवाद, नाटक, आणि आधुनिक तंत्रज्ञानाचा वापर करणे.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- GROWTH JOURNEY -->
+    <section class="journey-section">
+        <p class="journey-eyebrow">वय ३ ते १२ — एक निरंतर प्रवास</p>
+        <h2>प्रत्येक टप्प्यावर मूल पुढे जातं, आम्ही सोबत असतो</h2>
+        <div class="journey-wrap">
+            <div class="journey-stops">
+                <div class="journey-stop"><div class="dot"><i class="fa-solid fa-seedling"></i></div><div class="age-label">वय ३</div><div class="age-desc">Early Riser</div></div>
+                <div class="journey-stop"><div class="dot"><i class="fa-solid fa-shapes"></i></div><div class="age-label">वय ७</div><div class="age-desc">Riser</div></div>
+                <div class="journey-stop"><div class="dot"><i class="fa-solid fa-calculator"></i></div><div class="age-label">वय ८</div><div class="age-desc">Commander</div></div>
+                <div class="journey-stop"><div class="dot"><i class="fa-solid fa-trophy"></i></div><div class="age-label">वय १२</div><div class="age-desc">Future Ready</div></div>
+            </div>
+
+            <div class="stats-strip">
+                <div class="stat-box"><div class="stat-number">2</div><div class="stat-label">तास रोज</div></div>
+                <div class="stat-box"><div class="stat-number">8</div><div class="stat-label">मुख्य Skill Pillars</div></div>
+                <div class="stat-box"><div class="stat-number">4</div><div class="stat-label">Stages वयोगट</div></div>
+                <div class="stat-box"><div class="stat-number">100%</div><div class="stat-label">Holistic Development</div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION SELECTOR -->
+    <section class="section-selector" id="curriculum">
+        <h2>प्रोग्राम निवडा आणि सविस्तर आराखडा पहा</h2>
+        <div class="tab-buttons">
+            <button class="tab-btn active" data-cohort="early-risers" onclick="switchCohort('early-risers')">
+                <i class="fa-solid fa-child-reaching"></i> Early Risers (Age 3-7)
+            </button>
+            <button class="tab-btn" data-cohort="risers" onclick="switchCohort('risers')">
+                <i class="fa-solid fa-users-gear"></i> Risers (Age 8-12)
+            </button>
+        </div>
+    </section>
+
+    <!-- COHORT CONTENT AREA -->
+    <section class="cohort-container">
+        <!-- EARLY RISERS -->
+        <div class="cohort-view active" id="early-risers">
+            <div class="cohort-card">
+                <div class="cohort-intro-grid">
+                    <div class="cohort-info">
+                        <h3>गट १: Early Risers (वय ३ ते ७ वर्षे)</h3>
+                        <p>या वयात मुलांचा मेंदू ९०% विकसित होतो. पाठांतराला फाटा देऊन खेळांतून आणि कृतीद्वारे मुलांचा पाया भक्कम करतो.</p>
+                    </div>
+                    <div class="cohort-img-wrapper">
+                        <img src="https://s3.ap-south-1.amazonaws.com/assets.klayschools.com/wp-content/uploads/2025/09/18162638/Montessori.webp" alt="Montessori kids">
+                    </div>
+                </div>
+                <div class="pillars-grid">
+                    <div class="pillar-card">
+                        <h4><i class="fa-solid fa-brain"></i> १. बुद्धिमत्ता (Cognitive)</h4>
+                        <ul>
+                            <li>आकृत्यांची कोडी (Pattern Recognition)</li>
+                            <li>मेमरी गेम्स व एकाग्रता वाढवणे</li>
+                            <li>रंग, आकार व वस्तूंचे वर्गीकरण</li>
+                        </ul>
+                    </div>
+                    <div class="pillar-card">
+                        <h4><i class="fa-solid fa-comments"></i> २. कला व संवाद (Arts)</h4>
+                        <ul>
+                            <li>बडबडगीते व शुद्ध उच्चार सराव</li>
+                            <li>कृतीशील गोष्टी व Storytelling</li>
+                            <li>म्युझिक व सोप्या नाटुकल्या</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- RISERS -->
+        <div class="cohort-view" id="risers">
+            <div class="cohort-card">
+                <div class="cohort-intro-grid">
+                    <div class="cohort-info">
+                        <h3>गट २: Risers (वय ८ ते ११ वर्षे)</h3>
+                        <p>हा वयोगट शाळा आणि बाहेरील जग समजायला लागतो. येथे मुलांचे गणित, सायन्स आणि भाषिक कौशल्य प्रगत पातळीवर नेतो.</p>
+                    </div>
+                    <div class="cohort-img-wrapper">
+                        <img src="https://scotle.org/wp-content/uploads/2024/09/ThumNail_cmp.gif" alt="Kids science experiment">
+                    </div>
+                </div>
+                <div class="pillars-grid">
+                    <div class="pillar-card">
+                        <h4><i class="fa-solid fa-calculator"></i> १. तार्किक गणित व सायन्स</h4>
+                        <ul>
+                            <li>वेदिक मॅथ्स: जलद आकडेमोड ट्रिक्स</li>
+                            <li>घरगुती विज्ञान प्रयोग</li>
+                            <li>Mind Maps & Quick Recall</li>
+                        </ul>
+                    </div>
+                    <div class="pillar-card">
+                        <h4><i class="fa-solid fa-microphone"></i> २. प्रगत पब्लिक स्पीकिंग</h4>
+                        <ul>
+                            <li>इंग्रजी संभाषणाचा सराव</li>
+                            <li>नाटक (Drama) व स्टेज डेअरिंग</li>
+                            <li>स्वच्छ देहबोली (Body Language)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DAILY SCHEDULE -->
+    <section class="schedule-section" id="schedule">
+        <h2>दैनिक वेळापत्रक</h2>
+        <div class="schedule-grid">
+            <div class="schedule-card">
+                <h3>Happi-Start</h3>
+                <p>योग, प्राणायाम व ध्यान, थकवा दूर करणारे व्यायाम.</p>
+            </div>
+            <div class="schedule-card accent">
+                <h3>Logic Hub</h3>
+                <p>गंमतीदार गणित कोडे, वेदीक गणित व प्रत्यक्ष प्रयोग.</p>
+            </div>
+            <div class="schedule-card">
+                <h3>Social Break</h3>
+                <p>खाऊची सुट्टी, मित्रांशी संवाद व टीम गेम्स.</p>
+            </div>
+            <div class="schedule-card accent">
+                <h3>Art & Speak</h3>
+                <p>पब्लिक स्पीकिंग, इंग्रजी संवाद, ड्रामा व डान्स.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- DIGITAL STORE SECTION (LAST SECTION BEFORE FOOTER) -->
+    <section class="store-section" id="store">
         <div class="store-header">
-            <div class="badge-store"><i class="fa-solid fa-book-open"></i> E-Books & Worksheets</div>
-            <h1>Digital Resources Store</h1>
-            <p>आमचे अनुभवी शिक्षक आणि मार्गदर्शकांनी तयार केलेले डिजिटल अभ्यास साहित्य, ई-बुक्स आणि वर्कशीट्स.</p>
+            <h2>Digital Store & Resources</h2>
+            <p>आमचे आगामी डिजिटल अभ्यास साहित्य आणि ई-बुक्स (प्रत्येकी ₹199)</p>
         </div>
 
         <div class="products-grid">
-            <!-- Product 1 -->
             <div class="product-card">
                 <span class="product-badge">Coming Soon</span>
                 <div class="product-img-wrap"><i class="fa-solid fa-calculator"></i></div>
                 <div class="product-body">
                     <div>
                         <h3 class="product-title">वेदिक मॅथ्स ट्रिक्स E-Book</h3>
-                        <p class="product-desc">लहान मुलांसाठी जलद आकडेमोड शिकवणारे अत्यंत सोपे आणि मार्गदर्शक ई-बुक.</p>
+                        <p class="product-desc">लहान मुलांसाठी जलद आकडेमोड शिकवणारे मार्गदर्शक ई-बुक.</p>
                     </div>
                     <div class="product-footer">
                         <div class="price-box">
@@ -267,14 +891,13 @@
                 </div>
             </div>
 
-            <!-- Product 2 -->
             <div class="product-card">
                 <span class="product-badge">Coming Soon</span>
                 <div class="product-img-wrap" style="background:#e0f2f1; color:var(--primary);"><i class="fa-solid fa-comments"></i></div>
                 <div class="product-body">
                     <div>
-                        <h3 class="product-title">Spoken English Practice Kit</h3>
-                        <p class="product-desc">दैनंदिन संभाषणासाठी आवश्यक वाक्ये आणि सरावासाठी विशेष PDF वर्कशीट.</p>
+                        <h3 class="product-title">Spoken English Kit</h3>
+                        <p class="product-desc">दैनंदिन संभाषणासाठी आवश्यक वाक्ये आणि PDF वर्कशीट.</p>
                     </div>
                     <div class="product-footer">
                         <div class="price-box">
@@ -286,14 +909,13 @@
                 </div>
             </div>
 
-            <!-- Product 3 -->
             <div class="product-card">
                 <span class="product-badge">Coming Soon</span>
                 <div class="product-img-wrap" style="background:#fff3e0; color:var(--amber);"><i class="fa-solid fa-book-bookmark"></i></div>
                 <div class="product-body">
                     <div>
-                        <h3 class="product-title">पालकांसाठी मार्गदर्शक हँडबुक</h3>
-                        <p class="product-desc">मुलांचा सर्वांगीण विकास आणि अभ्यासाचे नियोजन करण्यासाठी पालकांचे मार्गदर्शक.</p>
+                        <h3 class="product-title">पालक हँडबुक</h3>
+                        <p class="product-desc">मुलांचा सर्वांगीण विकास आणि अभ्यासाचे नियोजन.</p>
                     </div>
                     <div class="product-footer">
                         <div class="price-box">
@@ -307,10 +929,11 @@
         </div>
     </section>
 
-    <!-- FOOTER -->
+    <!-- FOOTER / CONTACT -->
     <footer id="contact">
         <div class="footer-logo">HappiEdge<span> Academy</span></div>
         <p class="footer-desc">सिन्नरमधील सर्वात प्रगत आणि आधुनिक सुसंगत बाल विकास संस्था.</p>
+
         <div class="contact-info-grid">
             <div class="contact-item">
                 <i class="fa-solid fa-location-dot"></i>
@@ -325,11 +948,30 @@
             <div class="contact-item">
                 <i class="fa-solid fa-globe"></i>
                 <h4>वेबसाइट</h4>
-                <p>HappiEdge Digital Store</p>
+                <p>HappiEdge Academy Portal</p>
             </div>
         </div>
-        <div class="rights-text"><p>© 2026 HappiEdge Academy. All Rights Reserved.</p></div>
+
+        <div class="rights-text">
+            <p>© 2026 HappiEdge Academy. All Rights Reserved.</p>
+        </div>
     </footer>
 
+    <script>
+        function switchCohort(cohort) {
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll('.cohort-view').forEach(view => view.classList.remove('active'));
+            document.querySelector('.tab-btn[data-cohort="' + cohort + '"]').classList.add('active');
+            document.getElementById(cohort).classList.add('active');
+        }
+
+        const progressBar = document.getElementById('scrollProgress');
+        window.addEventListener('scroll', () => {
+            const scrollTop = window.scrollY;
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+            progressBar.style.width = pct + '%';
+        }, { passive: true });
+    </script>
 </body>
 </html>
