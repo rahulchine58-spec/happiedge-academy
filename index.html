@@ -142,7 +142,7 @@
         }
 
         nav {
-            background-color: rgba(253, 251, 247, 0.82);
+            background-color: rgba(253, 251, 247, 0.9);
             backdrop-filter: blur(12px);
             border-bottom: 1px solid var(--border-soft);
             padding: 15px 5%;
@@ -158,9 +158,19 @@
         .logo-text { font-size: 24px; font-weight: 800; color: var(--primary); font-family: var(--heading-font); text-decoration: none; }
         .logo-text span { color: var(--accent); }
 
-        .nav-links { display: flex; gap: 20px; align-items: center; flex-wrap: wrap; }
+        .nav-links { display: flex; gap: 20px; align-items: center; }
         .nav-links a { text-decoration: none; color: var(--text-dark); font-weight: 600; font-size: 15px; position: relative; }
         .nav-links a:hover { color: var(--accent); }
+
+        /* Mobile Menu Toggle Button */
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: var(--primary);
+            cursor: pointer;
+        }
 
         /* Blink Animation for New Arrival */
         .blink-badge {
@@ -662,7 +672,24 @@
 
         .rights-text { border-top: 1px solid var(--border-soft); padding-top: 20px; font-size: 12px; color: var(--text-light); }
 
+        /* RESPONSIVE MEDIA QUERY FOR MOBILE VIEW */
         @media (max-width: 968px) {
+            .menu-toggle { display: block; }
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                background: rgba(253, 251, 247, 0.98);
+                position: absolute;
+                top: 100%;
+                left: 0;
+                padding: 20px;
+                border-bottom: 1px solid var(--border-soft);
+                box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+                gap: 15px;
+                text-align: center;
+            }
+            .nav-links.active { display: flex; }
             .vision-mission-grid, .pillars-grid, .cohort-intro-grid, .schedule-grid, .contact-info-grid, .products-grid, .academy-grid, .journey-stops, .stats-strip, .prospectus-wrapper, .aa-content-grid, .aa-input-row {
                 grid-template-columns: 1fr;
             }
@@ -689,14 +716,15 @@
         <div class="logo-area">
             <a href="#" class="logo-text">HappiEdge<span> Academy</span></a>
         </div>
-        <div class="nav-links">
-            <a href="#curriculum">Programs</a>
-            <a href="#schedule">Schedule</a>
-            <a href="#prospectus">Prospectus</a>
-            <a href="#academy">Digital Academy</a>
-            <a href="#store">Digital Store</a>
-            <a href="#anand-aangan">आनंद आंगण <span class="blink-badge">New</span></a>
-            <a href="#contact" class="cta-nav">संपर्क करा</a>
+        <button class="menu-toggle" onclick="toggleMenu()"><i class="fa-solid fa-bars"></i></button>
+        <div class="nav-links" id="navLinks">
+            <a href="#curriculum" onclick="toggleMenu()">Programs</a>
+            <a href="#schedule" onclick="toggleMenu()">Schedule</a>
+            <a href="#prospectus" onclick="toggleMenu()">Prospectus</a>
+            <a href="#academy" onclick="toggleMenu()">Digital Academy</a>
+            <a href="#store" onclick="toggleMenu()">Digital Store</a>
+            <a href="#anand-aangan" onclick="toggleMenu()">आनंद आंगण <span class="blink-badge">New</span></a>
+            <a href="#contact" class="cta-nav" onclick="toggleMenu()">संपर्क करा</a>
         </div>
     </nav>
 
@@ -1311,6 +1339,11 @@
 
     <!-- JAVASCRIPT FUNCTIONS -->
     <script>
+        function toggleMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('active');
+        }
+
         function switchCohort(cohort) {
             document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
             document.querySelectorAll('.cohort-view').forEach(view => view.classList.remove('active'));
