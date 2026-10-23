@@ -158,9 +158,28 @@
         .logo-text { font-size: 24px; font-weight: 800; color: var(--primary); font-family: var(--heading-font); text-decoration: none; }
         .logo-text span { color: var(--accent); }
 
-        .nav-links { display: flex; gap: 20px; align-items: center; }
-        .nav-links a { text-decoration: none; color: var(--text-dark); font-weight: 600; font-size: 15px; }
+        .nav-links { display: flex; gap: 20px; align-items: center; flex-wrap: wrap; }
+        .nav-links a { text-decoration: none; color: var(--text-dark); font-weight: 600; font-size: 15px; position: relative; }
         .nav-links a:hover { color: var(--accent); }
+
+        /* Blink Animation for New Arrival */
+        .blink-badge {
+            background-color: var(--accent);
+            color: white;
+            font-size: 9px;
+            font-weight: 800;
+            padding: 2px 6px;
+            border-radius: 10px;
+            position: absolute;
+            top: -10px;
+            right: -22px;
+            animation: blinkEffect 1s infinite ease-in-out;
+            text-transform: uppercase;
+        }
+        @keyframes blinkEffect {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.3; transform: scale(0.9); }
+        }
 
         .cta-nav {
             background-color: var(--accent);
@@ -203,7 +222,7 @@
         .vm-card h2 { font-size: 22px; color: var(--primary); margin-bottom: 12px; font-family: var(--heading-font); }
         .vm-card p { color: var(--text-light); font-size: 15px; }
 
-        /* JOURNEY SECTION */
+        /* GROWTH JOURNEY */
         .journey-section { padding: 40px 5% 50px 5%; text-align: center; }
         .journey-eyebrow { color: var(--accent); font-weight: 800; letter-spacing: 2px; text-transform: uppercase; font-size: 13px; margin-bottom: 8px; }
         .journey-section h2 { font-size: 32px; color: var(--primary); font-weight: 800; margin-bottom: 30px; font-family: var(--heading-font); }
@@ -252,39 +271,6 @@
         .schedule-card.accent { border-top-color: var(--accent); }
         .schedule-card h3 { font-size: 16px; color: var(--primary); margin-bottom: 6px; font-weight: 700; font-family: var(--heading-font); }
         .schedule-card p { font-size: 12px; color: var(--text-light); }
-
-        /* DIGITAL ACADEMY SECTION */
-        .academy-section { padding: 50px 5%; background: rgba(255,255,255,0.8); border-top: 1px solid var(--border-soft); border-bottom: 1px solid var(--border-soft); }
-        .academy-header { text-align: center; margin-bottom: 35px; }
-        .academy-header h2 { font-size: 32px; color: var(--primary); font-weight: 800; font-family: var(--heading-font); margin-bottom: 8px; }
-        .academy-header p { color: var(--text-light); font-size: 15px; }
-        .academy-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 25px; max-width: 1000px; margin: 0 auto; }
-        .academy-card { background: #fff8f0; border: 1px solid var(--border-soft); border-radius: 22px; padding: 30px; position: relative; box-shadow: 0 10px 30px rgba(0,0,0,0.02); text-align: left; }
-        .academy-badge { position: absolute; top: 18px; right: 18px; background: var(--amber); color: white; padding: 4px 10px; border-radius: 20px; font-size: 10px; font-weight: 800; text-transform: uppercase; }
-        .academy-card i { font-size: 32px; color: var(--accent); margin-bottom: 15px; }
-        .academy-card h3 { font-size: 20px; color: var(--primary); font-weight: 800; margin-bottom: 10px; font-family: var(--heading-font); }
-        .academy-card p { font-size: 13px; color: var(--text-light); margin-bottom: 15px; }
-        .academy-features { list-style: none; padding-left: 0; margin-bottom: 20px; }
-        .academy-features li { font-size: 13px; color: var(--text-dark); margin-bottom: 6px; display: flex; align-items: center; gap: 6px; }
-        .academy-features li i { font-size: 13px; color: var(--primary); margin-bottom: 0; }
-        .academy-btn { background-color: #cbd5e1; color: white; border: none; padding: 8px 18px; border-radius: 22px; font-weight: 700; font-size: 13px; cursor: not-allowed; display: inline-flex; align-items: center; gap: 5px; }
-
-        /* DIGITAL STORE SECTION */
-        .store-section { padding: 50px 5%; background: rgba(248, 250, 252, 0.8); border-bottom: 1px solid var(--border-soft); }
-        .store-header { text-align: center; margin-bottom: 35px; }
-        .store-header h2 { font-size: 32px; color: var(--primary); font-weight: 800; font-family: var(--heading-font); margin-bottom: 8px; }
-        .store-header p { color: var(--text-light); font-size: 15px; }
-        .products-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; max-width: 1100px; margin: 0 auto; }
-        .product-card { background: white; border: 1px solid var(--border-soft); border-radius: 22px; overflow: hidden; position: relative; box-shadow: 0 10px 30px rgba(0,0,0,0.03); display: flex; flex-direction: column; justify-content: space-between; }
-        .product-badge { position: absolute; top: 12px; left: 12px; background: #64748b; color: white; padding: 3px 10px; border-radius: 20px; font-size: 10px; font-weight: 800; z-index: 2; text-transform: uppercase; }
-        .product-img-wrap { height: 160px; background: #f1f5f9; display: flex; align-items: center; justify-content: center; color: var(--text-light); font-size: 38px; }
-        .product-body { padding: 20px; display: flex; flex-direction: column; justify-content: space-between; flex-grow: 1; }
-        .product-title { font-size: 16px; color: var(--primary); font-weight: 800; margin-bottom: 6px; font-family: var(--heading-font); }
-        .product-desc { font-size: 12px; color: var(--text-light); margin-bottom: 15px; }
-        .product-footer { display: flex; align-items: center; justify-content: space-between; border-top: 1px solid var(--border-soft); padding-top: 12px; }
-        .price-box .current-price { font-size: 18px; font-weight: 800; color: var(--accent); font-family: 'Khand', sans-serif; }
-        .price-box .original-price { font-size: 11px; color: var(--text-light); text-decoration: line-through; }
-        .buy-btn { background-color: #cbd5e1; color: white; border: none; padding: 6px 14px; border-radius: 18px; font-weight: 700; font-size: 12px; cursor: not-allowed; display: inline-flex; align-items: center; gap: 4px; }
 
         /* ==========================================
            DIGITAL PROSPECTUS GENERATOR SECTION
@@ -372,7 +358,6 @@
             overflow-x: auto;
         }
 
-        /* Full A4 Page Design Setup */
         .a4-prospectus {
             width: 210mm;
             min-height: 297mm;
@@ -389,7 +374,6 @@
             justify-content: space-between;
         }
 
-        /* Professional Letter Style 'To,' Block */
         .a4-to-block {
             background: #fdfbf7;
             border-left: 4px solid var(--primary);
@@ -423,7 +407,6 @@
         .a4-title { font-size: 20px; color: var(--primary); font-weight: 800; font-family: var(--heading-font); margin-bottom: 4px; line-height: 1.2; text-align: center; }
         .a4-subtitle { font-size: 11px; color: var(--text-light); text-align: center; margin-bottom: 10px; }
 
-        /* Clean Built-in SVG Graphic Container replacing external broken link */
         .a4-graphic-container {
             width: 100%;
             background: #f8fafc;
@@ -460,7 +443,6 @@
             margin-right: 4px;
         }
 
-        /* Vision Mission Grid */
         .a4-vm-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -476,7 +458,6 @@
         .a4-vm-box h6 { font-size: 11px; color: var(--primary); font-weight: 800; margin-bottom: 2px; font-family: var(--heading-font); }
         .a4-vm-box p { font-size: 9px; color: var(--text-light); line-height: 1.3; }
 
-        /* Pricing Card */
         .a4-pricing-card {
             background: linear-gradient(135deg, #fff8f0 0%, #ffebee 100%);
             border: 1px solid rgba(255, 87, 34, 0.3);
@@ -507,6 +488,166 @@
         .a4-partner-info p { font-size: 10px; color: var(--text-light); }
         .a4-contact-badge { background: var(--accent); color: white; padding: 5px 12px; border-radius: 20px; font-size: 11px; font-weight: 700; }
 
+        /* ==========================================
+           NEW SECTION: आनंद आंगण (ANAND AANGAN)
+           ========================================== */
+        .anand-aangan-section {
+            padding: 70px 5%;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+            border-top: 1px solid var(--border-soft);
+            border-bottom: 1px solid var(--border-soft);
+            text-align: center;
+        }
+        .aa-header h2 {
+            font-size: 36px;
+            color: var(--primary);
+            font-weight: 800;
+            font-family: var(--heading-font);
+            margin-bottom: 10px;
+        }
+        .aa-header h2 span { color: var(--accent); }
+        .aa-header p {
+            color: var(--text-light);
+            font-size: 16px;
+            max-width: 800px;
+            margin: 0 auto 40px auto;
+        }
+        .aa-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: #fff8f0;
+            border: 1px solid var(--border-soft);
+            border-radius: 30px;
+            padding: 45px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+            text-align: left;
+        }
+        .aa-content-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 25px;
+            margin-bottom: 35px;
+        }
+        .aa-feature-box {
+            background: white;
+            border: 1px solid var(--border-soft);
+            border-radius: 20px;
+            padding: 25px;
+        }
+        .aa-feature-box h4 {
+            font-size: 20px;
+            color: var(--primary);
+            font-weight: 800;
+            margin-bottom: 12px;
+            font-family: var(--heading-font);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .aa-feature-box h4 i { color: var(--accent); }
+        .aa-feature-box p {
+            font-size: 14px;
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+        .aa-form-box {
+            background: white;
+            border: 2px solid var(--border-soft);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.02);
+        }
+        .aa-form-box h3 {
+            font-size: 22px;
+            color: var(--primary);
+            font-weight: 800;
+            margin-bottom: 20px;
+            font-family: var(--heading-font);
+            text-align: center;
+        }
+        .aa-input-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        .aa-field {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+        .aa-field label {
+            display: block;
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 13px;
+            margin-bottom: 6px;
+        }
+        .aa-field input, .aa-field select, .aa-field textarea {
+            width: 100%;
+            padding: 10px 14px;
+            border: 2px solid var(--border-soft);
+            border-radius: 10px;
+            font-size: 14px;
+            font-family: var(--body-font);
+            outline: none;
+            transition: all 0.3s ease;
+        }
+        .aa-field input:focus, .aa-field select:focus, .aa-field textarea:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 4px rgba(255, 87, 34, 0.1);
+        }
+        .aa-submit-btn {
+            background-color: var(--accent);
+            color: white;
+            border: none;
+            padding: 14px 30px;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 16px;
+            cursor: pointer;
+            width: 100%;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(255, 87, 34, 0.3);
+        }
+        .aa-submit-btn:hover {
+            background-color: #e64a19;
+            transform: translateY(-2px);
+        }
+
+        /* DIGITAL ACADEMY SECTION */
+        .academy-section { padding: 50px 5%; background: rgba(255,255,255,0.8); border-top: 1px solid var(--border-soft); border-bottom: 1px solid var(--border-soft); }
+        .academy-header { text-align: center; margin-bottom: 35px; }
+        .academy-header h2 { font-size: 32px; color: var(--primary); font-weight: 800; font-family: var(--heading-font); margin-bottom: 8px; }
+        .academy-header p { color: var(--text-light); font-size: 15px; }
+        .academy-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 25px; max-width: 1000px; margin: 0 auto; }
+        .academy-card { background: #fff8f0; border: 1px solid var(--border-soft); border-radius: 22px; padding: 30px; position: relative; box-shadow: 0 10px 30px rgba(0,0,0,0.02); text-align: left; }
+        .academy-badge { position: absolute; top: 18px; right: 18px; background: var(--amber); color: white; padding: 4px 10px; border-radius: 20px; font-size: 10px; font-weight: 800; text-transform: uppercase; }
+        .academy-card i { font-size: 32px; color: var(--accent); margin-bottom: 15px; }
+        .academy-card h3 { font-size: 20px; color: var(--primary); font-weight: 800; margin-bottom: 10px; font-family: var(--heading-font); }
+        .academy-card p { font-size: 13px; color: var(--text-light); margin-bottom: 15px; }
+        .academy-features { list-style: none; padding-left: 0; margin-bottom: 20px; }
+        .academy-features li { font-size: 13px; color: var(--text-dark); margin-bottom: 6px; display: flex; align-items: center; gap: 6px; }
+        .academy-features li i { font-size: 13px; color: var(--primary); margin-bottom: 0; }
+        .academy-btn { background-color: #cbd5e1; color: white; border: none; padding: 8px 18px; border-radius: 22px; font-weight: 700; font-size: 13px; cursor: not-allowed; display: inline-flex; align-items: center; gap: 5px; }
+
+        /* DIGITAL STORE SECTION */
+        .store-section { padding: 50px 5%; background: rgba(248, 250, 252, 0.8); border-bottom: 1px solid var(--border-soft); }
+        .store-header { text-align: center; margin-bottom: 35px; }
+        .store-header h2 { font-size: 32px; color: var(--primary); font-weight: 800; font-family: var(--heading-font); margin-bottom: 8px; }
+        .store-header p { color: var(--text-light); font-size: 15px; }
+        .products-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; max-width: 1100px; margin: 0 auto; }
+        .product-card { background: white; border: 1px solid var(--border-soft); border-radius: 22px; overflow: hidden; position: relative; box-shadow: 0 10px 30px rgba(0,0,0,0.03); display: flex; flex-direction: column; justify-content: space-between; }
+        .product-badge { position: absolute; top: 12px; left: 12px; background: #64748b; color: white; padding: 3px 10px; border-radius: 20px; font-size: 10px; font-weight: 800; z-index: 2; text-transform: uppercase; }
+        .product-img-wrap { height: 160px; background: #f1f5f9; display: flex; align-items: center; justify-content: center; color: var(--text-light); font-size: 38px; }
+        .product-body { padding: 20px; display: flex; flex-direction: column; justify-content: space-between; flex-grow: 1; }
+        .product-title { font-size: 16px; color: var(--primary); font-weight: 800; margin-bottom: 6px; font-family: var(--heading-font); }
+        .product-desc { font-size: 12px; color: var(--text-light); margin-bottom: 15px; }
+        .product-footer { display: flex; align-items: center; justify-content: space-between; border-top: 1px solid var(--border-soft); padding-top: 12px; }
+        .price-box .current-price { font-size: 18px; font-weight: 800; color: var(--accent); font-family: 'Khand', sans-serif; }
+        .price-box .original-price { font-size: 11px; color: var(--text-light); text-decoration: line-through; }
+        .buy-btn { background-color: #cbd5e1; color: white; border: none; padding: 6px 14px; border-radius: 18px; font-weight: 700; font-size: 12px; cursor: not-allowed; display: inline-flex; align-items: center; gap: 4px; }
+
         /* FOOTER / CONTACT */
         footer { background-color: #fffdfc; border-top: 1px solid var(--border-soft); padding: 50px 5% 25px 5%; text-align: center; }
         .footer-logo { font-size: 26px; font-weight: 800; color: var(--primary); margin-bottom: 10px; font-family: var(--heading-font); }
@@ -522,7 +663,7 @@
         .rights-text { border-top: 1px solid var(--border-soft); padding-top: 20px; font-size: 12px; color: var(--text-light); }
 
         @media (max-width: 968px) {
-            .vision-mission-grid, .pillars-grid, .cohort-intro-grid, .schedule-grid, .contact-info-grid, .products-grid, .academy-grid, .journey-stops, .stats-strip, .prospectus-wrapper {
+            .vision-mission-grid, .pillars-grid, .cohort-intro-grid, .schedule-grid, .contact-info-grid, .products-grid, .academy-grid, .journey-stops, .stats-strip, .prospectus-wrapper, .aa-content-grid, .aa-input-row {
                 grid-template-columns: 1fr;
             }
             .hero h1 { font-size: 34px; }
@@ -554,6 +695,7 @@
             <a href="#prospectus">Prospectus</a>
             <a href="#academy">Digital Academy</a>
             <a href="#store">Digital Store</a>
+            <a href="#anand-aangan">आनंद आंगण <span class="blink-badge">New</span></a>
             <a href="#contact" class="cta-nav">संपर्क करा</a>
         </div>
     </nav>
@@ -708,8 +850,8 @@
     <!-- DIGITAL PROSPECTUS GENERATOR SECTION -->
     <section class="prospectus-section" id="prospectus">
         <div class="prospectus-header">
-            <h2>माहिती पुस्तक डाउनलोड करा </h2>
-            <p>खालील माहिती भरा आणि तुमचे वैयक्तिकृत फुल-पेज माहितीपुस्तक तयार करा!</p>
+            <h2>डिजिटल प्रॉस्पेक्टस जनरेटर</h2>
+            <p>तुमची माहिती भरा आणि तुमचे वैयक्तिकृत फुल-पेज माहितीपुस्तक तयार करा!</p>
         </div>
 
         <div class="prospectus-wrapper">
@@ -758,7 +900,7 @@
                         <h3 class="a4-title">Future Ready Leaders..! बाल विकास उपक्रम</h3>
                         <p class="a4-subtitle">खेळ, कृती व आधुनिक तंत्रज्ञानाचा समतोल साधत मुलांच्या सर्वांगीण विकासाचा भक्कम पाया.</p>
 
-                        <!-- Clean Built-in Graphic Container replacing external broken link -->
+                        <!-- Clean Built-in Graphic Container -->
                         <div class="a4-graphic-container">
                             <div class="a4-graphic-title"><i class="fa-solid fa-seedling" style="color:var(--accent)"></i> Holistic Child Development Framework</div>
                             <div class="a4-branches-grid">
@@ -805,6 +947,57 @@
                         <div class="a4-contact-badge" id="previewPhone">+91-70581 05058</div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+       NEW SECTION: आनंद आंगण (ANAND AANGAN)
+       ========================================== -->
+    <section class="anand-aangan-section" id="anand-aangan">
+        <div class="aa-header">
+            <h2>विशेष उपक्रम: <span>'आनंद आंगण'</span></h2>
+            <p>मुलांच्या सर्वांगीण विकासासाठी (Holistic Development) आमचा विशेष आणि नाविन्यपूर्ण उपक्रम</p>
+        </div>
+
+        <div class="aa-container">
+            <div class="aa-content-grid">
+                <div class="aa-feature-box">
+                    <h4><i class="fa-solid fa-user-plus"></i> Join as a Facilitator</h4>
+                    <p>या उपक्रमांतर्गत आम्ही मुलांच्या सर्वांगीण विकासाच्या अ‍ॅक्टिव्हिटी मोठ्या लेव्हलवर राबवणार आहोत. यामध्ये विविध क्षेत्रात राहणाऱ्या योग्य व इच्छुक उमेदवारांना आमच्यासोबत जोडण्याची सुवर्णसंधी आहे. <strong>Facilitator Training Details</strong> आम्ही लवकरच कळवणार आहोत. अधिक माहितीसाठी खालील फॉर्म भरा!</p>
+                </div>
+            </div>
+
+            <!-- Interest Form Box -->
+            <div class="aa-form-box">
+                <h3><i class="fa-solid fa-pen-to-square"></i> 'आनंद आंगण' नोंदणी फॉर्म (Expression of Interest)</h3>
+                <form onsubmit="event.preventDefault(); alert('धन्यवाद! आपली माहिती यशस्वीरित्या नोंदवली गेली आहे. आम्ही लवकरच आपल्याशी संपर्क साधू.');">
+                    <div class="aa-input-row">
+                        <div class="aa-field">
+                            <label>पूर्ण नाव (Full Name):</label>
+                            <input type="text" placeholder="आपले नाव प्रविष्ट करा" required>
+                        </div>
+                        <div class="aa-field">
+                            <label>मोबाईल नंबर (Mobile No):</label>
+                            <input type="tel" placeholder="१० अंकी मोबाईल नंबर" required>
+                        </div>
+                    </div>
+                    <div class="aa-input-row">
+                        <div class="aa-field">
+                            <label>शहर / तालुका (City / Taluka):</label>
+                            <input type="text" placeholder="उदा. सिन्नर, नाशिक" required>
+                        </div>
+                        <div class="aa-field">
+                            <label>अनुभव / पार्श्वभूमी (Background):</label>
+                            <select>
+                                <option>शिक्षण क्षेत्र / टीचिंग (Education/Teaching)</option>
+                                <option>पालक / गृहिणी (Parent / Homemaker)</option>
+                                <option>समाजकार्य / इतर (Social Work / Other)</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button type="submit" class="aa-submit-btn"><i class="fa-solid fa-paper-plane"></i> माहिती सबमिट करा</button>
+                </form>
             </div>
         </div>
     </section>
