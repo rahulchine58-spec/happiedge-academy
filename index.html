@@ -476,7 +476,7 @@ footer{background:#fffdfc;border-top:1px solid var(--border-soft);padding:60px 5
   </div>
   <div class="prospectus-wrapper">
     <div class="generator-form-card reveal">
-      <h3><i class="fa-solid fa-pen-ruler"></i> तुमची माहिती (ब्रोशरच्या खाली दिसेल)</h3>
+      <h3><i class="fa-solid fa-pen-ruler"></i> तुमची माहिती</h3>
       <div class="form-group"><label for="inputName"><i class="fa-solid fa-user"></i> तुमचे नाव (Your Name):</label><input type="text" id="inputName" placeholder="उदा. राहुल चिने" maxlength="60" autocomplete="name"></div>
       <div class="form-group"><label for="inputPhone"><i class="fa-solid fa-phone"></i> संपर्क क्रमांक (Mobile No):</label><input type="tel" id="inputPhone" placeholder="उदा. 7058105058" maxlength="15" inputmode="tel" autocomplete="tel"></div>
       <div class="form-group"><label for="inputBusiness"><i class="fa-solid fa-store"></i> बिझनेस / संस्थेचे नाव:</label><input type="text" id="inputBusiness" placeholder="उदा. HappiEdge Academy" maxlength="60"></div>
@@ -484,15 +484,19 @@ footer{background:#fffdfc;border-top:1px solid var(--border-soft);padding:60px 5
       <div class="generator-actions">
         <button class="gen-btn btn-pdf" id="btnPdf"><i class="fa-solid fa-file-pdf"></i> ब्रोशर PDF डाऊनलोड करा</button>
       </div>
-      <p class="form-note">तुम्ही भरलेली माहिती ब्रोशरच्या खाली छापली जाईल.</p>
+      <p class="form-note">तुम्ही भरलेली माहिती ब्रोशरच्या वरती "To," मध्ये छापली जाईल.</p>
     </div>
 
     <div class="preview-container reveal d1">
       <div class="preview-fit" id="previewFit">
         <div class="preview-scaler" id="previewScaler">
-          <div class="a4-prospectus" id="prospectusSheet">
-            <div>
-              <div class="a4-header">
+          \1<div class="a4-to-block">
+                <div class="to-label">To,</div>
+                <strong class="js-name">आपले नाव</strong><br>
+                <span><span class="js-business">आपली संस्था</span>, <span class="js-city">शहर</span></span><br>
+                <span><i class="fa-solid fa-phone" style="font-size:9px;color:var(--accent)"></i> <span class="js-phone">मोबाईल नंबर</span></span>
+              </div>
+              \2
                 <div class="a4-logo">HappiEdge<span> Academy</span></div>
                 <div class="a4-tag">Official Prospectus</div>
               </div>
@@ -518,12 +522,9 @@ footer{background:#fffdfc;border-top:1px solid var(--border-soft);padding:60px 5
                 <div class="a4-price-tag"><span class="old-p">₹1500/-</span><div class="new-p">₹500/- <span style="font-size:10px;font-weight:normal">प्रति महिना</span></div></div>
               </div>
             </div>
-            <div class="a4-bottom">
-              <div class="a4-footer-card">
-                <div class="a4-partner-info"><div class="a4-presented">प्रस्तुतकर्ता / Presented by</div><h4 class="js-business">HappiEdge Academy</h4><p><i class="fa-solid fa-user"></i> <span class="js-name">राहुल चिने</span> &nbsp;|&nbsp; <i class="fa-solid fa-location-dot"></i> <span class="js-city">सिन्नर</span></p></div>
-                <div class="a4-contact-badge"><i class="fa-solid fa-phone"></i> <span class="js-phone">+91-70581 05058</span></div>
-              </div>
-              <div class="a4-powered">Powered by HappiEdge Academy, सिन्नर &nbsp;·&nbsp; +91-70581 05058 &nbsp;·&nbsp; info@happiedge.com</div>
+            <div class="a4-footer-card">
+              <div class="a4-partner-info"><h4>HappiEdge Academy</h4><p>संचालक: राहुल चिने | सिन्नर &nbsp;·&nbsp; info@happiedge.com</p></div>
+              <div class="a4-contact-badge">+91-70581 05058</div>
             </div>
           </div>
         </div>
@@ -707,7 +708,7 @@ footer{background:#fffdfc;border-top:1px solid var(--border-soft);padding:60px 5
 (function(){
   /* ---- CONFIG: change the academy WhatsApp number here ---- */
   const ACADEMY_WA = '917058105058';
-  const DEFAULTS = {name:'राहुल चिने', phone:'+91-70581 05058', business:'HappiEdge Academy', city:'सिन्नर'};
+  const DEFAULTS = {name:'आपले नाव', phone:'मोबाईल नंबर', business:'आपली संस्था', city:'शहर'};
   const $ = (s,c=document)=>c.querySelector(s);
   const $$ = (s,c=document)=>Array.from(c.querySelectorAll(s));
   const fine = window.matchMedia('(hover:hover) and (pointer:fine)').matches;
@@ -801,7 +802,7 @@ footer{background:#fffdfc;border-top:1px solid var(--border-soft);padding:60px 5
     holder.style.cssText='position:absolute;left:0;top:0;width:210mm;z-index:9999;background:#fff';
     const clone=sheet.cloneNode(true);clone.removeAttribute('id');clone.style.boxShadow='none';clone.style.border='none';clone.style.borderRadius='0';
     holder.appendChild(clone);document.body.appendChild(holder);document.body.appendChild(overlay);
-    const base=(vals().business||'HappiEdge').replace(/[^\w\u0900-\u097F]+/g,'-');
+    const base=(inputs.business.value.trim()||'HappiEdge').replace(/[^\w\u0900-\u097F]+/g,'-');
     const done=()=>{holder.remove();overlay.remove();window.scrollTo(0,sy);btn.disabled=false;btn.innerHTML=old};
     const go=()=>html2pdf().from(clone).set({
       margin:0,filename:base+'-Brochure.pdf',image:{type:'jpeg',quality:.98},
