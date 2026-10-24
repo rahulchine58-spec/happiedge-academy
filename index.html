@@ -213,6 +213,15 @@ nav{background:rgba(253,251,247,.82);backdrop-filter:blur(14px);-webkit-backdrop
 .a4-price-text p{font-size:10px;color:var(--text-light)}
 .a4-price-tag{text-align:right}.a4-price-tag .old-p{font-size:10px;color:var(--text-light);text-decoration:line-through}
 .a4-price-tag .new-p{font-size:16px;color:var(--accent);font-weight:700;font-family:'Khand',sans-serif}
+.a4-aa{background:#f4faf8;border:1px solid rgba(0,121,107,.25);border-radius:8px;padding:12px 14px;margin-bottom:10px}
+.a4-aa-title{font-size:14px;font-weight:800;color:var(--primary);font-family:var(--heading-font);margin-bottom:3px}
+.a4-aa-title i{color:var(--accent);margin-right:4px}
+.a4-aa-intro{font-size:10px;color:var(--text-light);line-height:1.4;margin-bottom:6px}
+.a4-aa-grid{display:grid;grid-template-columns:1fr 1fr;gap:7px}
+.a4-aa-item{background:#fff;border:1px solid var(--border-soft);border-left:3px solid var(--accent);border-radius:5px;padding:6px 9px}
+.a4-aa-item.wide{grid-column:1/-1}
+.a4-aa-item b{display:block;font-size:10.5px;color:var(--primary);font-family:var(--heading-font);line-height:1.3}
+.a4-aa-item span{font-size:9.5px;color:var(--text-light);line-height:1.3;display:block}
 .a4-footer-card{background:#fffdfc;border:1px solid var(--border-soft);padding:10px 15px;border-radius:8px;display:flex;justify-content:space-between;align-items:center;margin-top:auto}
 .a4-partner-info h4{font-size:12px;color:var(--primary);font-weight:800;font-family:var(--heading-font)}
 .a4-partner-info p{font-size:10px;color:var(--text-light)}
@@ -222,6 +231,15 @@ nav{background:rgba(253,251,247,.82);backdrop-filter:blur(14px);-webkit-backdrop
 /* ===== ANAND AANGAN ===== */
 .anand-aangan-section{padding:80px 5%;text-align:center}
 .aa-container{max-width:1000px;margin:0 auto;background:linear-gradient(160deg,#fff8f0,#fff);border:1px solid var(--border-soft);border-radius:32px;padding:44px;box-shadow:var(--shadow-3d);text-align:left}
+.aa-intro{font-size:15.5px;color:var(--text-dark);line-height:1.8;margin-bottom:26px;text-align:left}
+.aa-activities{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:34px}
+.aa-act{background:#fff;border:1px solid var(--border-soft);border-radius:20px;padding:22px 20px;position:relative;text-align:left}
+.aa-act>i{font-size:24px;color:var(--accent);margin-bottom:10px;display:block}
+.aa-act h4{font-family:var(--heading-font);color:var(--primary);font-size:16.5px;line-height:1.3;margin-bottom:6px}
+.aa-act p{font-size:13px;color:var(--text-light)}
+.aa-num{position:absolute;top:14px;right:16px;font-family:'Khand',sans-serif;font-size:34px;font-weight:700;color:rgba(255,87,34,.18);line-height:1}
+.aa-join-title{font-family:var(--heading-font);color:var(--primary);font-size:22px;margin:6px 0 10px;display:flex;align-items:center;gap:10px}
+.aa-join-title i{color:var(--accent)}
 .aa-perks{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:30px}
 .aa-perk{background:#fff;border:1px solid var(--border-soft);border-radius:18px;padding:20px;text-align:center}
 .aa-perk i{font-size:26px;color:var(--accent);margin-bottom:8px}
@@ -281,7 +299,7 @@ footer{background:#fffdfc;border-top:1px solid var(--border-soft);padding:60px 5
   .menu-toggle{display:block}
   .nav-links{display:none;flex-direction:column;width:100%;background:rgba(253,251,247,.98);position:absolute;top:100%;left:0;padding:22px;border-bottom:1px solid var(--border-soft);box-shadow:0 10px 20px rgba(0,0,0,.05);gap:18px;text-align:center}
   .nav-links.active{display:flex}
-  .vision-mission-grid,.pillars-grid,.cohort-intro-grid,.contact-info-grid,.products-grid,.academy-grid,.prospectus-wrapper,.aa-input-row,.aa-perks{grid-template-columns:1fr}
+  .vision-mission-grid,.pillars-grid,.cohort-intro-grid,.contact-info-grid,.products-grid,.academy-grid,.prospectus-wrapper,.aa-input-row,.aa-perks,.aa-activities{grid-template-columns:1fr}
   .schedule-grid,.stats-strip,.journey-stops{grid-template-columns:repeat(2,1fr)}
   .journey-stops::before{display:none}
   .generator-form-card{position:static}
@@ -519,6 +537,18 @@ footer{background:#fffdfc;border-top:1px solid var(--border-soft);padding:60px 5
                 <div class="a4-price-text"><h6><i class="fa-solid fa-tag"></i> विशेष मासिक शुल्क (Special Fees)</h6><p>मर्यादित काळासाठी विशेष सवलत योजना</p></div>
                 <div class="a4-price-tag"><span class="old-p">₹1500/-</span><div class="new-p">₹500/- <span style="font-size:10px;font-weight:normal">प्रति महिना</span></div></div>
               </div>
+
+              <div class="a4-aa">
+                <div class="a4-aa-title"><i class="fa-solid fa-house-chimney-window"></i> आनंद आंगण - सर्वांगीण विकास केंद्र, सिन्नर</div>
+                <p class="a4-aa-intro">HappiEdge Academy &amp; SEVA (Social Educational &amp; Vocational Advancement Foundation) यांच्या माध्यमातून सिन्नर मधील लहान मुलांसाठी अभिनव, संस्कारशील उपक्रम. भारतीय पारंपरिक शिक्षण व्यवस्थेवर आधारित दैनिक उपक्रम:</p>
+                <div class="a4-aa-grid">
+                  <div class="a4-aa-item"><b>१. शैक्षणिक व बौद्धिक विकास</b><span>खेळातून विज्ञान व गणित संकल्पना आधारित शिक्षण</span></div>
+                  <div class="a4-aa-item"><b>२. शारीरिक विकास</b><span>सुदृढ आरोग्यासाठी योग, खेळ व व्यायाम</span></div>
+                  <div class="a4-aa-item"><b>३. संस्कार व मानवी मूल्ये</b><span>भारतीय संस्कृतीशी ओळख, आदरयुक्त वर्तन, नैतिक मूल्ये</span></div>
+                  <div class="a4-aa-item"><b>४. संवाद कौशल्ये व भाषाविकास</b><span>बोलण्याची भीती कमी करून आत्मविश्वास वाढवणे</span></div>
+                  <div class="a4-aa-item wide"><b>५. नेतृत्व गुणांचा विकास</b><span>नेतृत्व ओळखणे आणि सुप्त गुणांना वाव देणे</span></div>
+                </div>
+              </div>
             </div>
             <div class="a4-footer-card">
               <div class="a4-partner-info"><h4>HappiEdge Academy</h4><p>संचालक: राहुल चिने | सिन्नर &nbsp;·&nbsp; info@happiedge.com</p></div>
@@ -535,10 +565,19 @@ footer{background:#fffdfc;border-top:1px solid var(--border-soft);padding:60px 5
 <section class="anand-aangan-section" id="anand-aangan">
   <div class="sec-head reveal">
     <p class="eyebrow">New · विशेष उपक्रम</p>
-    <h2 class="sec-title">'आनंद आंगण' — Join as a Facilitator</h2>
-    <p class="sec-sub">मुलांच्या सर्वांगीण विकासासाठी आमचा विशेष आणि नाविन्यपूर्ण उपक्रम</p>
+    <h2 class="sec-title">आनंद आंगण — सर्वांगीण विकास केंद्र</h2>
+    <p class="sec-sub">HappiEdge Academy &amp; Social Educational &amp; Vocational Advancement Foundation (SEVA) यांचा संयुक्त उपक्रम</p>
   </div>
   <div class="aa-container reveal">
+    <p class="aa-intro">HappiEdge Academy &amp; Social Educational &amp; Vocational Advancement Foundation (SEVA) यांच्या माध्यमातून आम्ही सिन्नर मधील लहान मुलांसाठी <strong>आनंद आंगण - सर्वांगीण विकास केंद्र</strong> हा एक अभिनव, संस्कारशील उपक्रम सुरू करत आहोत. आम्ही बालकांच्या सर्वांगीण विकासासाठी कटिबद्ध असून याद्वारे परिसरातील मुलांमध्ये योग्य संस्कार व कौशल्ये रुजवण्याचा आमचा प्रामाणिक प्रयत्न आहे. आमच्या या केंद्रात मुलांसाठी भारतीय पारंपरिक शिक्षण व्यवस्थेवर आधारित खालीलप्रमाणे विविध दैनिक उपक्रम घेण्यात येणार आहेत.</p>
+    <div class="aa-activities">
+      <div class="aa-act" data-tilt><div class="glare"></div><span class="aa-num lift">१</span><i class="fa-solid fa-lightbulb lift"></i><h4 class="lift">शैक्षणिक आणि बौद्धिक विकास</h4><p class="lift">खेळातून विज्ञान आणि गणित यांचे संकल्पना आधारित शिक्षण.</p></div>
+      <div class="aa-act" data-tilt><div class="glare"></div><span class="aa-num lift">२</span><i class="fa-solid fa-person-running lift"></i><h4 class="lift">शारीरिक विकास</h4><p class="lift">सुदृढ आरोग्यासाठी आवश्यक योग, खेळ व व्यायाम.</p></div>
+      <div class="aa-act" data-tilt><div class="glare"></div><span class="aa-num lift">३</span><i class="fa-solid fa-heart lift"></i><h4 class="lift">संस्कार व मानवी मूल्ये</h4><p class="lift">भारतीय संस्कृतीशी ओळख, आदरयुक्त वर्तन आणि नैतिक मूल्ये.</p></div>
+      <div class="aa-act" data-tilt><div class="glare"></div><span class="aa-num lift">४</span><i class="fa-solid fa-comments lift"></i><h4 class="lift">संवाद कौशल्ये आणि भाषाविकास</h4><p class="lift">मुलांमधील बोलण्याची भीती कमी करणे, आत्मविश्वास आणि बोलण्याचे कौशल्य वाढवणे.</p></div>
+      <div class="aa-act" data-tilt><div class="glare"></div><span class="aa-num lift">५</span><i class="fa-solid fa-crown lift"></i><h4 class="lift">नेतृत्व गुणांचा विकास</h4><p class="lift">मुलांमधील नेतृत्व ओळखणे आणि त्यांच्या सुप्त गुणांना वाव देणे.</p></div>
+    </div>
+    <h3 class="aa-join-title"><i class="fa-solid fa-user-plus"></i> Join as a Facilitator</h3>
     <p class="aa-lead">या उपक्रमांतर्गत आम्ही मुलांच्या सर्वांगीण विकासाच्या अ‍ॅक्टिव्हिटी मोठ्या लेव्हलवर राबवणार आहोत. यामध्ये विविध क्षेत्रातील योग्य व इच्छुक उमेदवारांना आमच्यासोबत जोडण्याची सुवर्णसंधी आहे. <strong>Facilitator Training Details</strong> आम्ही लवकरच कळवणार आहोत.</p>
     <div class="aa-perks">
       <div class="aa-perk" data-tilt><div class="glare"></div><i class="fa-solid fa-handshake lift"></i><h4 class="lift">भागीदारी</h4><p class="lift">आमच्या नेटवर्कचा भाग व्हा</p></div>
