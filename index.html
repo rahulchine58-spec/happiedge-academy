@@ -182,6 +182,7 @@ nav{background:rgba(253,251,247,.82);backdrop-filter:blur(14px);-webkit-backdrop
 .form-group input,.aa-field input,.aa-field select{width:100%;padding:11px 14px;border:2px solid var(--border-soft);border-radius:12px;font-size:14px;font-family:var(--body-font);outline:none;transition:all .3s;background:#fff}
 .form-group input:focus,.aa-field input:focus,.aa-field select:focus{border-color:var(--accent);box-shadow:0 0 0 4px rgba(255,87,34,.1)}
 .generator-actions{display:flex;gap:12px;margin-top:20px}
+.generator-actions .gen-btn{padding:15px 12px;font-size:14px}
 .gen-btn{flex:1;padding:13px 12px;border-radius:30px;font-weight:700;font-size:13px;border:none;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:6px;transition:all .3s;font-family:var(--body-font)}
 .btn-pdf{background:var(--primary);color:#fff}.btn-pdf:hover{background:var(--primary-light);transform:translateY(-2px)}
 .btn-whatsapp{background:#25d366;color:#fff}.btn-whatsapp:hover{background:#1ebe5d;transform:translateY(-2px)}
@@ -215,7 +216,12 @@ nav{background:rgba(253,251,247,.82);backdrop-filter:blur(14px);-webkit-backdrop
 .a4-footer-card{background:#fffdfc;border:1px solid var(--border-soft);padding:10px 15px;border-radius:8px;display:flex;justify-content:space-between;align-items:center;margin-top:auto}
 .a4-partner-info h4{font-size:12px;color:var(--primary);font-weight:800;font-family:var(--heading-font)}
 .a4-partner-info p{font-size:10px;color:var(--text-light)}
-.a4-contact-badge{background:var(--accent);color:#fff;padding:5px 12px;border-radius:20px;font-size:11px;font-weight:700}
+.a4-contact-badge{background:var(--accent);color:#fff;padding:7px 14px;border-radius:20px;font-size:12px;font-weight:700;white-space:nowrap}
+.a4-bottom{margin-top:auto}
+.a4-presented{font-size:9px;font-weight:700;letter-spacing:.5px;color:var(--accent);text-transform:uppercase;margin-bottom:2px}
+.a4-partner-info h4{font-size:15px}
+.a4-partner-info p i{color:var(--accent);font-size:10px}
+.a4-powered{text-align:center;font-size:9px;color:var(--text-light);margin-top:6px}
 
 /* ===== ANAND AANGAN ===== */
 .anand-aangan-section{padding:80px 5%;text-align:center}
@@ -470,15 +476,15 @@ footer{background:#fffdfc;border-top:1px solid var(--border-soft);padding:60px 5
   </div>
   <div class="prospectus-wrapper">
     <div class="generator-form-card reveal">
-      <h3><i class="fa-solid fa-pen-ruler"></i> तुमची माहिती</h3>
+      <h3><i class="fa-solid fa-pen-ruler"></i> तुमची माहिती (ब्रोशरच्या खाली दिसेल)</h3>
       <div class="form-group"><label for="inputName"><i class="fa-solid fa-user"></i> तुमचे नाव (Your Name):</label><input type="text" id="inputName" placeholder="उदा. राहुल चिने" maxlength="60" autocomplete="name"></div>
       <div class="form-group"><label for="inputPhone"><i class="fa-solid fa-phone"></i> संपर्क क्रमांक (Mobile No):</label><input type="tel" id="inputPhone" placeholder="उदा. 7058105058" maxlength="15" inputmode="tel" autocomplete="tel"></div>
-      <div class="form-group"><label for="inputBusiness"><i class="fa-solid fa-store"></i> व्यवसाय:</label><input type="text" id="inputBusiness" placeholder="उदा. HappiEdge Academy" maxlength="60"></div>
+      <div class="form-group"><label for="inputBusiness"><i class="fa-solid fa-store"></i> बिझनेस / संस्थेचे नाव:</label><input type="text" id="inputBusiness" placeholder="उदा. HappiEdge Academy" maxlength="60"></div>
       <div class="form-group"><label for="inputCity"><i class="fa-solid fa-location-dot"></i> शहर (City):</label><input type="text" id="inputCity" placeholder="उदा. सिन्नर, नाशिक" maxlength="40"></div>
       <div class="generator-actions">
-        <button class="gen-btn btn-pdf" id="btnPdf"><i class="fa-solid fa-file-pdf"></i> PDF डाऊनलोड करा</button>
-        <button class="gen-btn btn-whatsapp" id="btnWa"><i class="fa-brands fa-whatsapp"></i> व्हॉट्सॲपवर पाठवा</button>
+        <button class="gen-btn btn-pdf" id="btnPdf"><i class="fa-solid fa-file-pdf"></i> ब्रोशर PDF डाऊनलोड करा</button>
       </div>
+      <p class="form-note">तुम्ही भरलेली माहिती ब्रोशरच्या खाली छापली जाईल.</p>
     </div>
 
     <div class="preview-container reveal d1">
@@ -486,11 +492,6 @@ footer{background:#fffdfc;border-top:1px solid var(--border-soft);padding:60px 5
         <div class="preview-scaler" id="previewScaler">
           <div class="a4-prospectus" id="prospectusSheet">
             <div>
-              <div class="a4-to-block">
-                <div class="to-label">To,</div>
-                <strong class="js-name">राहुल चिने</strong><br>
-                <span><span class="js-business">HappiEdge Academy</span>, <span class="js-city">सिन्नर</span></span>
-              </div>
               <div class="a4-header">
                 <div class="a4-logo">HappiEdge<span> Academy</span></div>
                 <div class="a4-tag">Official Prospectus</div>
@@ -517,9 +518,12 @@ footer{background:#fffdfc;border-top:1px solid var(--border-soft);padding:60px 5
                 <div class="a4-price-tag"><span class="old-p">₹1500/-</span><div class="new-p">₹500/- <span style="font-size:10px;font-weight:normal">प्रति महिना</span></div></div>
               </div>
             </div>
-            <div class="a4-footer-card">
-              <div class="a4-partner-info"><h4 class="js-business">HappiEdge Academy</h4><p>संचालक: <span class="js-name">राहुल चिने</span> | <span class="js-city">सिन्नर</span></p></div>
-              <div class="a4-contact-badge js-phone">+91-70581 05058</div>
+            <div class="a4-bottom">
+              <div class="a4-footer-card">
+                <div class="a4-partner-info"><div class="a4-presented">प्रस्तुतकर्ता / Presented by</div><h4 class="js-business">HappiEdge Academy</h4><p><i class="fa-solid fa-user"></i> <span class="js-name">राहुल चिने</span> &nbsp;|&nbsp; <i class="fa-solid fa-location-dot"></i> <span class="js-city">सिन्नर</span></p></div>
+                <div class="a4-contact-badge"><i class="fa-solid fa-phone"></i> <span class="js-phone">+91-70581 05058</span></div>
+              </div>
+              <div class="a4-powered">Powered by HappiEdge Academy, सिन्नर &nbsp;·&nbsp; +91-70581 05058 &nbsp;·&nbsp; info@happiedge.com</div>
             </div>
           </div>
         </div>
@@ -785,28 +789,26 @@ footer{background:#fffdfc;border-top:1px solid var(--border-soft);padding:60px 5
   if(document.fonts&&document.fonts.ready)document.fonts.ready.then(fitSheet);
   fitSheet();
 
-  /* ---- Prospectus: PDF (renders an un-scaled clone, so output is always a clean A4) ---- */
+  /* ---- Prospectus: PDF download ---- */
   $('#btnPdf').addEventListener('click',()=>{
     if(typeof html2pdf==='undefined'){alert('PDF साधन लोड होत आहे, कृपया काही सेकंदांनी पुन्हा प्रयत्न करा.');return;}
     const btn=$('#btnPdf'),old=btn.innerHTML;btn.disabled=true;btn.innerHTML='<i class="fa-solid fa-spinner fa-spin"></i> तयार होत आहे...';
+    const sy=window.scrollY;window.scrollTo(0,0);
+    const overlay=document.createElement('div');
+    overlay.style.cssText='position:fixed;inset:0;background:#fff;z-index:10000;display:flex;align-items:center;justify-content:center;font:700 18px var(--body-font);color:#004d40';
+    overlay.textContent='ब्रोशर तयार होत आहे...';
     const holder=document.createElement('div');
-    holder.style.cssText='position:fixed;left:-10000px;top:0;width:210mm;background:#fff';
-    const clone=sheet.cloneNode(true);clone.removeAttribute('id');clone.style.boxShadow='none';clone.style.border='none';
-    holder.appendChild(clone);document.body.appendChild(holder);
-    const name=(vals().business||'HappiEdge').replace(/[^\w\u0900-\u097F]+/g,'-');
-    html2pdf().from(clone).set({
-      margin:0,filename:name+'-Prospectus.pdf',image:{type:'jpeg',quality:.98},
-      html2canvas:{scale:2,useCORS:true,scrollY:0,scrollX:0},
+    holder.style.cssText='position:absolute;left:0;top:0;width:210mm;z-index:9999;background:#fff';
+    const clone=sheet.cloneNode(true);clone.removeAttribute('id');clone.style.boxShadow='none';clone.style.border='none';clone.style.borderRadius='0';
+    holder.appendChild(clone);document.body.appendChild(holder);document.body.appendChild(overlay);
+    const base=(vals().business||'HappiEdge').replace(/[^\w\u0900-\u097F]+/g,'-');
+    const done=()=>{holder.remove();overlay.remove();window.scrollTo(0,sy);btn.disabled=false;btn.innerHTML=old};
+    const go=()=>html2pdf().from(clone).set({
+      margin:0,filename:base+'-Brochure.pdf',image:{type:'jpeg',quality:.98},
+      html2canvas:{scale:2,useCORS:true,scrollX:0,scrollY:0,backgroundColor:'#ffffff'},
       jsPDF:{unit:'mm',format:'a4',orientation:'portrait'}
-    }).save().catch(()=>alert('PDF तयार करताना अडचण आली. कृपया पुन्हा प्रयत्न करा.'))
-      .finally(()=>{holder.remove();btn.disabled=false;btn.innerHTML=old});
-  });
-
-  /* ---- Prospectus: WhatsApp share ---- */
-  $('#btnWa').addEventListener('click',()=>{
-    const v=vals();
-    const msg=`नमस्कार! हे आमचे ${v.business} चे डिजिटल माहितीपुस्तक आहे.\n\n📚 अभ्यासक्रम: बाल विकास व शिक्षण उपक्रम\n💰 विशेष शुल्क: ₹500/- प्रति महिना (सवलत मूल्य)\n\n👤 संचालक: ${v.name}\n📍 शहर: ${v.city}\n📞 संपर्क: ${v.phone}\n\nअधिक माहितीसाठी संपर्क साधा!`;
-    window.open('https://wa.me/?text='+encodeURIComponent(msg),'_blank','noopener');
+    }).save().then(done).catch(()=>{done();alert('PDF तयार करताना अडचण आली. कृपया पुन्हा प्रयत्न करा.')});
+    (document.fonts&&document.fonts.ready?document.fonts.ready:Promise.resolve()).then(()=>setTimeout(go,150));
   });
 
   /* ---- Anand Aangan form: sends details to academy WhatsApp ---- */
